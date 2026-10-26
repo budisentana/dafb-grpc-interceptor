@@ -1,8 +1,8 @@
 """
 DAFB: ML-DSA-65 credential signing and verification.
 
-This module provides the cryptographic operations needed by the
-DAFB gRPC client and server.
+Provides key generation, credential signing, and signature verification
+for the DAFB gRPC experiment.
 """
 
 import oqs
@@ -10,21 +10,38 @@ import oqs
 ALGORITHM = "ML-DSA-65"
 
 
-def sign_credential(credential: bytes) -> tuple[bytes, bytes]:
+def generate_keypair() -> tuple[bytes, bytes]:
     """
-    Generate an ML-DSA-65 key pair and sign a credential.
+    Generate an ML-DSA-65 key pair.
 
     Returns:
-        (public_key, signature)
+        (public_key, secret_key)
+    """
+    with oqs.Signature(ALGORITHM) as signer:
+        public_key = signer.generate_keypair()
+        secret_key = signer.export_secret_key()
+
+    return public_key, secret_key
+
+
+def sign_credential(
+    credential: bytes,
+    secret_key: bytes,
+) -> bytes:
+    """
+    Sign a credential using an existing ML-DSA-65 secret key.
+
+    Returns:
+        signature
     """
     if not isinstance(credential, bytes):
         raise TypeError("credential must be bytes")
 
-    with oqs.Signature(ALGORITHM) as signer:
-        public_key = signer.generate_keypair()
-        signature = signer.sign(credential)
+    if not isinstance(secret_key, bytes):
+        raise TypeError("secret_key must be bytes")
 
-    return public_key, signature
+    with oqs.Signature(ALGORITHM, secret_key=secret_key) as signer:
+        return signer.sign(credential)
 
 
 def verify_credential(

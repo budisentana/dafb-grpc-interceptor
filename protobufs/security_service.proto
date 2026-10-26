@@ -8,6 +8,8 @@ service CredentialBroker {
 
 message RegistrationRequest {
   string raw_token = 1;
+  bytes credential_payload = 2;
+  bytes signature = 3;
 }
 
 message RegistrationResponse {

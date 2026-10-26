@@ -3,3 +3,8 @@ __pycache__/
 *.pyc
 *.log
 *.tar.gz
+
+# DAFB experimental cryptographic keys
+keys/
+*.sk
+*.secret

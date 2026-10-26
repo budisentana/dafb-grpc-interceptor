@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n protobufs/security_service.proto\x12\rdafb.security\"(\n\x13RegistrationRequest\x12\x11\n\traw_token\x18\x01 \x01(\t\"A\n\x14RegistrationResponse\x12\x15\n\ropaque_handle\x18\x02 \x01(\t\x12\x12\n\nexpires_at\x18\x03 \x01(\x03\x32q\n\x10\x43redentialBroker\x12]\n\x12RegisterCredential\x12\".dafb.security.RegistrationRequest\x1a#.dafb.security.RegistrationResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n protobufs/security_service.proto\x12\rdafb.security\"W\n\x13RegistrationRequest\x12\x11\n\traw_token\x18\x01 \x01(\t\x12\x1a\n\x12\x63redential_payload\x18\x02 \x01(\x0c\x12\x11\n\tsignature\x18\x03 \x01(\x0c\"A\n\x14RegistrationResponse\x12\x15\n\ropaque_handle\x18\x02 \x01(\t\x12\x12\n\nexpires_at\x18\x03 \x01(\x03\x32q\n\x10\x43redentialBroker\x12]\n\x12RegisterCredential\x12\".dafb.security.RegistrationRequest\x1a#.dafb.security.RegistrationResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -32,9 +32,9 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'protobufs.security_service_
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
   _globals['_REGISTRATIONREQUEST']._serialized_start=51
-  _globals['_REGISTRATIONREQUEST']._serialized_end=91
-  _globals['_REGISTRATIONRESPONSE']._serialized_start=93
-  _globals['_REGISTRATIONRESPONSE']._serialized_end=158
-  _globals['_CREDENTIALBROKER']._serialized_start=160
-  _globals['_CREDENTIALBROKER']._serialized_end=273
+  _globals['_REGISTRATIONREQUEST']._serialized_end=138
+  _globals['_REGISTRATIONRESPONSE']._serialized_start=140
+  _globals['_REGISTRATIONRESPONSE']._serialized_end=205
+  _globals['_CREDENTIALBROKER']._serialized_start=207
+  _globals['_CREDENTIALBROKER']._serialized_end=320
 # @@protoc_insertion_point(module_scope)
