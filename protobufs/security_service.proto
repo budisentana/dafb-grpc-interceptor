@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package dafb.security;
+
+service CredentialBroker {
+  rpc RegisterCredential (RegistrationRequest) returns (RegistrationResponse);
+}
+
+message RegistrationRequest {
+  string raw_token = 1;
+}
+
+message RegistrationResponse {
+  string opaque_handle = 2;
+  int64 expires_at = 3;
+}
