@@ -1,0 +1,30 @@
+DAFB Experimental Environment
+=============================
+
+Hardware
+--------
+Processor: Intel Core i3-12100 (12th Gen)
+Architecture: x86_64
+Physical cores: 4
+Logical CPUs: 8
+Threads per core: 2
+Installed RAM: 7.0 GiB
+Swap: 4.0 GiB
+
+Operating System
+----------------
+OS: Ubuntu 26.04.1 LTS
+Kernel: 7.0.0-38-generic
+
+Software
+--------
+Python: 3.14.4
+gRPC (grpcio): 1.84.1
+gRPC Tools (grpcio-tools): 1.84.1
+liboqs-python: 0.16.0.1
+Cryptographic algorithm: ML-DSA-65
+
+Project
+-------
+Name: DAFB - Dynamic Adaptive Frame Budget
+Experiment status: Baseline preparation
