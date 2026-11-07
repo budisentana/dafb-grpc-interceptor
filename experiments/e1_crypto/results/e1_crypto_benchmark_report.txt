@@ -1,4 +1,4 @@
-Input: experiments/results/e1_crypto_benchmark.csv
+Input: experiments/e1_crypto/results/e1_crypto_benchmark.csv
 Runs: 5
 
 ML-DSA-65 (microseconds)

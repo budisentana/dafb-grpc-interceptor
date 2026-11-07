@@ -1,4 +1,4 @@
-Input: /home/budi/projects/dafb-grpc-interceptor/experiments/results/e1b_signature_benchmark.csv
+Input: /home/budi/projects/dafb-grpc-interceptor/experiments/e1b_signatures/results/e1b_signature_benchmark.csv
 Runs: 5
 
 ECDSA-P256 (microseconds)

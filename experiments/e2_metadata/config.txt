@@ -1,0 +1,66 @@
+E2 - GRPC METADATA PERFORMANCE BENCHMARK
+=========================================
+
+Research Objective
+------------------
+Evaluate the impact of increasing authentication metadata
+sizes on gRPC RPC performance with ML-DSA-65 authentication.
+
+Experimental Environment
+------------------------
+Hardware: Intel Core i3-12100
+Physical Cores: 4
+Logical CPUs: 8
+RAM: 7.0 GiB
+Operating System: Ubuntu 26.04.1 LTS
+Python: 3.14.4
+gRPC: grpcio 1.84.1
+Cryptographic Algorithm: ML-DSA-65
+
+Experimental Groups
+-------------------
+E2-A: Metadata Performance Characterization
+E2-B: DAFB Client Interceptor Overhead Evaluation
+
+Metadata Scenarios
+------------------
+S1: 256 bytes
+S2: 1024 bytes
+S3: 2048 bytes
+S4: 4096 bytes
+S5: 5120 bytes
+S6: 8192 bytes
+
+Authentication
+--------------
+Credential Payload: Fixed
+Signature Algorithm: ML-DSA-65
+Signature Verification: Enabled
+Synthetic Metadata: Variable
+
+Benchmark Parameters
+--------------------
+Warm-up Requests: 50
+Measured Requests: 500
+Repeated Runs: 5
+
+Metrics
+-------
+1. Mean RPC latency
+2. Median RPC latency
+3. P95 latency
+4. P99 latency
+5. Throughput (requests per second)
+6. Successful RPC requests
+7. Failed RPC requests
+
+Measurement Notes
+-----------------
+1. E2-A must bypass the DAFB client interceptor.
+2. E2-B will evaluate the existing client interceptor separately.
+3. Credential and signature sizes remain constant.
+4. Metadata payload size is varied independently.
+5. Application metadata size must not be confused with
+   actual HTTP/2 wire size.
+6. Record all raw observations.
+7. Do not discard failed requests from reliability reporting.

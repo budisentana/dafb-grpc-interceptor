@@ -12,13 +12,13 @@ As in E1:
   - every call creates its signer/verifier object from scratch
   - the same 66-byte credential is signed; verification checks the same
     signature every iteration
-  - raw rows are appended to experiments/results/e1b_signature_benchmark.csv
+  - raw rows are appended to experiments/e1b_signatures/results/e1b_signature_benchmark.csv
     with the same columns as E1
 
 New in E1b:
   - the order of the five schemes is shuffled in every run
   - CPU governor, turbo state and core affinity are recorded per run in
-    experiments/results/e1b_run_environment.csv
+    experiments/e1b_signatures/results/e1b_run_environment.csv
 """
 
 import csv
@@ -33,7 +33,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
-RESULTS_DIR = PROJECT_DIR / "experiments" / "results"
+RESULTS_DIR = PROJECT_DIR / "experiments" / "e1b_signatures" / "results"
 RESULT_FILE = RESULTS_DIR / "e1b_signature_benchmark.csv"
 ENV_FILE = RESULTS_DIR / "e1b_run_environment.csv"
 

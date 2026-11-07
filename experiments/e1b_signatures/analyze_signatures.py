@@ -7,8 +7,8 @@ measurements, and the mean of the per-run means with a 95% confidence interval
 than 10% away from the median run.
 
 Usage (from the project folder):
-  python experiments/scripts/analyze_signatures.py                       # E1b data
-  python experiments/scripts/analyze_signatures.py experiments/results/e1_crypto_benchmark.csv
+  python experiments/e1b_signatures/analyze_signatures.py                       # E1b data
+  python experiments/e1b_signatures/analyze_signatures.py experiments/e1_crypto/results/e1_crypto_benchmark.csv
 
 Writes <name>_summary.csv and <name>_report.txt next to the input file.
 """
@@ -21,7 +21,7 @@ from collections import defaultdict
 from pathlib import Path
 
 PROJECT_DIR = Path(__file__).resolve().parents[2]
-DEFAULT_FILE = PROJECT_DIR / "experiments" / "results" / "e1b_signature_benchmark.csv"
+DEFAULT_FILE = PROJECT_DIR / "experiments" / "e1b_signatures" / "results" / "e1b_signature_benchmark.csv"
 
 T975 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447, 7: 2.365, 8: 2.306, 9: 2.262}
 ALG_ORDER = ["ECDSA-P256", "Ed25519", "ML-DSA-44", "ML-DSA-65", "ML-DSA-87"]

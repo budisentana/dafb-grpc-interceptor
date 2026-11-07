@@ -23,6 +23,7 @@ from interceptors.mldsa_credentials import (
 RESULT_FILE = (
     PROJECT_DIR
     / "experiments"
+    / "e1_crypto"
     / "results"
     / "e1_crypto_benchmark.csv"
 )

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # DAFB: fix the CPU frequency for benchmarking, or restore the defaults.
-#   sudo bash experiments/scripts/cpu_setup.sh          -> governor=performance, turbo off
-#   sudo bash experiments/scripts/cpu_setup.sh restore  -> governor=powersave, turbo on
+#   sudo bash experiments/common/cpu_setup.sh          -> governor=performance, turbo off
+#   sudo bash experiments/common/cpu_setup.sh restore  -> governor=powersave, turbo on
 set -euo pipefail
 mode="${1:-fix}"
 if [[ $EUID -ne 0 ]]; then echo "Run with sudo."; exit 1; fi
