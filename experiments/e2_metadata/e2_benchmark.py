@@ -59,7 +59,7 @@ MEASURED_REQUESTS = 500
 
 HEADER_NAME = "authorization"
 HPACK_TABLE = 4096
-SWEEP_SIZES = list(range(1000, 6001, 250)) + [4051, 4052]   # header value lengths
+SWEEP_SIZES = [100, 250, 500, 750] + list(range(1000, 6001, 250)) + [4051, 4052]   # header value lengths
 TOKEN_SCHEMES = ["ES256", "EdDSA", "ML-DSA-44", "ML-DSA-65", "ML-DSA-87"]
 B64_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_"
 
