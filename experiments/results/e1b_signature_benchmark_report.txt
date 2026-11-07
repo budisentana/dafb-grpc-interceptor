@@ -1,0 +1,44 @@
+Input: /home/budi/projects/dafb-grpc-interceptor/experiments/results/e1b_signature_benchmark.csv
+Runs: 5
+
+ECDSA-P256 (microseconds)
+Operation          Median     Mean      p95      p99   Mean of run means (95% CI)
+Key generation       26.5     27.0     28.1     32.8   27.0 [26.3, 27.7]
+Signing              51.4     52.0     53.5     70.1   52.0 [51.0, 53.0]
+Verification         84.5     85.5     89.8    103.7   85.5 [84.0, 87.0]
+
+Ed25519 (microseconds)
+Operation          Median     Mean      p95      p99   Mean of run means (95% CI)
+Key generation       33.8     35.3     39.3     46.1   35.3 [32.4, 38.1]
+Signing              61.2     61.8     63.2     71.8   61.8 [61.0, 62.6]
+Verification        100.6    101.0    103.4    114.4   101.0 [98.8, 103.3]
+
+ML-DSA-44 (microseconds)
+Operation          Median     Mean      p95      p99   Mean of run means (95% CI)
+Key generation       31.9     32.4     33.1     35.9   32.4 [31.1, 33.7]
+Signing              67.1     81.6    168.8    242.7   81.6 [78.5, 84.8]
+Verification         32.0     32.1     33.2     35.9   32.1 [31.8, 32.4]
+
+ML-DSA-65 (microseconds)
+Operation          Median     Mean      p95      p99   Mean of run means (95% CI)
+Key generation       49.8     51.3     54.1     79.2   51.3 [49.1, 53.4]
+Signing             105.9    127.5    273.1    385.5   127.5 [122.9, 132.2]
+Verification         48.5     49.4     53.0     67.3   49.4 [47.5, 51.3]
+
+ML-DSA-87 (microseconds)
+Operation          Median     Mean      p95      p99   Mean of run means (95% CI)
+Key generation       73.4     74.8     79.5    101.0   74.8 [72.7, 76.9]
+Signing             128.9    151.2    298.0    416.1   151.2 [147.8, 154.6]
+Verification         71.2     71.8     73.4     88.6   71.8 [70.6, 73.0]
+
+Comparison (Table 7 of the paper), microseconds
+Scheme        Keygen med  Sign med  Verify med  Sign p99
+ECDSA-P256          26.5      51.4        84.5      70.1
+Ed25519             33.8      61.2       100.6      71.8
+ML-DSA-44           31.9      67.1        32.0     242.7
+ML-DSA-65           49.8     105.9        48.5     385.5
+ML-DSA-87           73.4     128.9        71.2     416.1
+
+Measurements: 37500, failed: 0
+Run check: 1 warning(s)
+  Ed25519 keygen: run 5 mean 39.2 us (+15% vs median run)
