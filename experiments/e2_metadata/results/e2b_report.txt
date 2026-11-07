@@ -1,0 +1,43 @@
+E2 results, 5 run(s)
+
+Part A: bearer tokens in the authorization header (bytes per call, HEADERS frames)
+Scenario    Value  Entry  Fits  Call 1  Later  Extra  Median us   p99 us  Calls/s
+none            0      0     -     269     18      0      324.0    347.4     3083
+ES256         398    443   yes     685    434    416      368.7    391.3     2707
+EdDSA         398    443   yes     685    434    416      369.2    395.1     2704
+ML-DSA-44    3545   3590   yes    3832   3581   3563      672.6    704.4     1504
+ML-DSA-65    4730   4775    no    5017   4766   4748      791.0    822.3     1280
+ML-DSA-87    6488   6533    no    6772   6524   6506      935.1    967.2     1077
+
+Part B: synthetic token sweep
+  Value  Entry  Fits  Call 1  Later  Median us
+    100    145   yes     385    134      342.3
+    250    295   yes     536    285      355.8
+    500    545   yes     787    536      377.7
+    750    795   yes    1037    786      398.7
+   1000   1045   yes    1287   1036      419.4
+   1250   1295   yes    1537   1286      441.0
+   1500   1545   yes    1787   1536      461.7
+   1750   1795   yes    2037   1786      482.3
+   2000   2045   yes    2287   2036      501.8
+   2250   2295   yes    2537   2286      523.7
+   2500   2545   yes    2787   2536      544.4
+   2750   2795   yes    3037   2786      565.5
+   3000   3045   yes    3287   3036      586.3
+   3250   3295   yes    3537   3286      627.4
+   3500   3545   yes    3787   3536      667.9
+   3750   3795   yes    4037   3786      703.4
+   4000   4045   yes    4287   4036      731.1
+   4051   4096   yes    4338   4087      734.8
+   4052   4097    no    4339   4088      734.8
+   4250   4295    no    4537   4286      750.4
+   4500   4545    no    4787   4536      770.2
+   4750   4795    no    5037   4786      792.2
+   5000   5045    no    5287   5036      812.6
+   5250   5295    no    5537   5286      833.6
+   5500   5545    no    5787   5536      853.0
+   5750   5795    no    6037   5786      874.3
+   6000   6045    no    6287   6036      894.2
+
+Byte check across runs: differs for S4052, S5750, S2000, S3500, ML-DSA-87, S750, S1000, S4500, EdDSA, ES256, S250
+Failed calls: bytes pass 0, latency pass 0

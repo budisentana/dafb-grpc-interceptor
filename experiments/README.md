@@ -32,3 +32,14 @@ sudo bash experiments/common/cpu_setup.sh restore
 ```
 
 `keys/` (ML-DSA secret key) is never committed.
+
+## E2b: E2 over a bandwidth-limited link (100 Mbit/s, tc netem)
+
+E2 repeated with gRPC traffic (TCP port 50060) limited to 100 Mbit/s on loopback; no delay added. 5 runs, fixed CPU frequency, 84,150 calls, 0 failures, 0 netem drops (7 Nov 2026).
+
+- Procedure: `e2_metadata/e2b_netem.sh` (on/off/status), `e2_metadata/e2b_run.sh` (5 runs, analysis, comparison)
+- Comparison with E2: `e2_metadata/e2b_compare.py` -> `results/e2b_comparison.csv`
+- Packet capture (S3000/S3500/S4000): `e2_metadata/e2b_capture.sh`, `results/e2b_segments.pcap`, analysed by `e2_metadata/e2b_capture_gaps.py` -> `results/e2b_capture_gaps.csv`
+- Raw data: `results/e2b_bytes.csv`, `results/e2b_latency.csv`, `results/e2b_run_environment.csv`, network condition in `results/e2b_netem_setup.txt`
+
+Main results (median latency): ML-DSA-65 791.0 us vs ES256 368.7 us (+114.5%), against +3.5% on plain loopback (E2). The sweep cost is 80-81 ns/byte below 3 KB and above 4 KB (serialization at 100 Mbit/s), with a transition of about 60 us between 3 and 4 KB; the capture shows one request segment per call and no extra packets, so its cause is left open.
