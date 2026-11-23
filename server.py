@@ -7,6 +7,7 @@ import grpc
 from protobufs import security_service_pb2 as pb2
 from protobufs import security_service_pb2_grpc as pb2_grpc
 from interceptors.dafb_engine import DAFBServerInterceptor
+from interceptors.jws_tokens import TokenVerifier
 from interceptors.mldsa_credentials import verify_credential
 
 
@@ -78,7 +79,13 @@ class CredentialBrokerServicer(pb2_grpc.CredentialBrokerServicer):
 
 
 def serve():
-    server_interceptor = DAFBServerInterceptor()
+    # The interceptor verifies the ML-DSA-65 bearer token in `authorization-pq`
+    # and serves later calls from its handle cache (DAFB reference path).
+    server_interceptor = DAFBServerInterceptor(
+        token_verifier=TokenVerifier(
+            {"ML-DSA-65": PUBLIC_KEY_FILE.read_bytes()}
+        ),
+    )
 
     server = grpc.server(
         futures.ThreadPoolExecutor(max_workers=10),

@@ -66,3 +66,12 @@ E2 repeated with gRPC traffic (TCP port 50060) limited to 100 Mbit/s on loopback
 - Raw data: `results/e2b_bytes.csv`, `results/e2b_latency.csv`, `results/e2b_run_environment.csv`, network condition in `results/e2b_netem_setup.txt`
 
 Main results (median latency): ML-DSA-65 791.0 us vs ES256 368.7 us (+114.5%), against +3.5% on plain loopback (E2). The sweep cost is 80-81 ns/byte below 3 KB and above 4 KB (serialization at 100 Mbit/s), with a transition of about 60 us between 3 and 4 KB; the capture shows one request segment per call and no extra packets, so its cause is left open.
+
+## DAFB reference path (for E4-E5)
+
+`interceptors/dafb_engine.py` now implements the path E3 is the baseline for. Tokens that fit the HPACK
+budget (4096 - 512 bytes) stay inline and are verified on every call. Larger tokens (every ML-DSA token) are
+sent once with `x-dafb-mode: register`; the server verifies them and returns a handle
+(`x-dafb-handle`, `x-dafb-handle-ttl`, capped by the token's `exp`), and later calls send only the handle.
+An unknown or expired handle is rejected (`x-dafb-error: handle-invalid`) and the client retries once with
+the full token. Token format: `interceptors/jws_tokens.py` (same as E2/E3). Tests: `python -m pytest tests/`.

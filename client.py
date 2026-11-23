@@ -1,4 +1,5 @@
 import sys
+import time
 from pathlib import Path
 
 import grpc
@@ -6,14 +7,16 @@ import grpc
 from protobufs import security_service_pb2 as pb2
 from protobufs import security_service_pb2_grpc as pb2_grpc
 from interceptors.dafb_engine import DAFBClientInterceptor
+from interceptors.jws_tokens import TokenSigner
 from interceptors.mldsa_credentials import sign_credential
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
 SECRET_KEY_FILE = PROJECT_DIR / "keys" / "mldsa65_secret.key"
+PUBLIC_KEY_FILE = PROJECT_DIR / "keys" / "mldsa65_public.key"
 
 
-def run_experiment(simulate_pq_overhead: bool):
+def run_experiment(calls: int = 3):
     target = "localhost:50051"
 
     if not SECRET_KEY_FILE.is_file():
@@ -54,19 +57,22 @@ def run_experiment(simulate_pq_overhead: bool):
 
     stub = pb2_grpc.CredentialBrokerStub(channel)
 
-    # Keep the two existing experimental scenarios.
-    if simulate_pq_overhead:
-        token_payload = "X" * 5120
-        print(
-            "Scenario: 5 KB synthetic metadata token "
-            "with an actual ML-DSA-65 credential signature."
-        )
-    else:
-        token_payload = "X" * 256
-        print(
-            "Scenario: 256-byte synthetic metadata token "
-            "with an actual ML-DSA-65 credential signature."
-        )
+    # Real ML-DSA-65 bearer token (JWS compact form, about 4.4 KB encoded).
+    # It exceeds the HPACK budget, so the first call registers it and the
+    # following calls send only the DAFB handle.
+    token_signer = TokenSigner(
+        "ML-DSA-65",
+        secret_key=secret_key,
+        public_key=PUBLIC_KEY_FILE.read_bytes(),
+    )
+    now = int(time.time())
+    token = token_signer.make_token({
+        "sub": "mldsa65_experiment_client",
+        "role": "research_experimenter",
+        "iat": now,
+        "exp": now + 3600,
+    })
+    print(f"Bearer token size: {len(token)} bytes")
 
     request = pb2.RegistrationRequest(
         raw_token="baseline_telemetry_probe",
@@ -74,19 +80,20 @@ def run_experiment(simulate_pq_overhead: bool):
         signature=signature,
     )
 
-    metadata_packet = [("authorization-pq", token_payload)]
+    metadata_packet = [("authorization-pq", token)]
 
     try:
-        response = stub.RegisterCredential(
-            request,
-            metadata=metadata_packet,
-            timeout=5.0,
-        )
+        for call in range(1, calls + 1):
+            response = stub.RegisterCredential(
+                request,
+                metadata=metadata_packet,
+                timeout=5.0,
+            )
+            print(f"\nCall {call}: success")
+            print(f"  Credential handle from service: {response.opaque_handle}")
+            print(f"  Handle expiration timestamp: {response.expires_at}")
 
-        print("\n--- Telemetry Metrics ---")
-        print("Status: Success")
-        print(f"Assigned Opaque Pointer Handle: {response.opaque_handle}")
-        print(f"Handle expiration timestamp: {response.expires_at}")
+        print(f"\nDAFB client modes used: {client_interceptor.stats}")
 
     except grpc.RpcError as exc:
         print(
@@ -99,4 +106,4 @@ def run_experiment(simulate_pq_overhead: bool):
 
 
 if __name__ == "__main__":
-    run_experiment(simulate_pq_overhead=True)
+    run_experiment()
