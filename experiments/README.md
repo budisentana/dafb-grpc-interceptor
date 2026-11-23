@@ -123,6 +123,12 @@ Same schemes, tokens, verifier and procedure as E4 (byte pass + 50 warm-up + 500
   without indexing" (representation byte 0x00) on every call, while gRPC's own headers are indexed. The
   table options take effect (4-byte size update on the first call) but the token is still sent in full;
   `e5_analyze.py` reports this as the indexing check.
+  Reported as not achievable in grpcio (option A). RFC 7541 section 7.1.3 also allows encoders to send
+  `authorization` never-indexed as a sensitive header (compression side channels); grpcio does not use
+  that representation but sends all metadata without indexing. Analytic bound `2a indexed*` in the
+  comparison: if the token were indexed, a later call would carry a 1-byte indexed field (dynamic-table
+  index <= 126), i.e. `none` HEADERS + 1 B (about 19 B, below DAFB reference's 98 B, whose handle is not
+  indexed either); verification still runs on every call, so its latency is taken as `e3_verify`.
 - Baseline 3, verified-token cache: `interceptors/token_cache.py` (SHA-256 of the token, TTL 3600 s capped
   by `exp`, 100,000 entries, as DAFB handles). The full token is sent; verification is skipped on a hit.
 - Baseline 4, TLS: `--transport tls` runs every arm over TLS (self-signed P-256 certificate per run).

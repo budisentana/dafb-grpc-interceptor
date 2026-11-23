@@ -38,6 +38,8 @@ ARMS = ["none", "e3_verify", "hpack_64k", "token_cache", "token_cache_miss",
 BASELINES = [("1 no mitigation", "e3_verify", "e3_verify"), ("2 HPACK 64 KiB", "hpack_64k", "hpack_64k"),
              ("3 token cache", "token_cache", "token_cache_miss")]
 POLICIES = ["dafb_adaptive", "dafb_reference"]
+INDEXED_FIELD_BYTES = 1          # RFC 7541 6.1: indexed field, 7-bit prefix -> 1 byte up to index 126
+BASELINE_2_ANALYTIC = "2a indexed*"
 T95 = {1: 12.706, 2: 4.303, 3: 3.182, 4: 2.776, 5: 2.571, 6: 2.447, 7: 2.365, 8: 2.306, 9: 2.262}
 
 
@@ -158,6 +160,26 @@ def main():
                         unit=byt[k(policy)]["unit"], dafb_c2s_B=Fb, baseline_c2s_B=Bb, diff_c2s_B=Fb - Bb,
                         dafb_beats_on_bytes="yes" if Fb < Bb else "NO", k_bytes_c2s=fmt(k_b),
                         dafb_both_B=both(policy), baseline_both_B=both(steady), k_bytes_both=fmt(k_bb)))
+                # Baseline 2 analytic bound (not achievable in grpcio): token indexed after the first call,
+                # so a later call carries a 1-byte indexed field (dynamic-table index <= 126) instead of the
+                # token; verification still runs on every call, so latency is taken as e3_verify.
+                none_later = byt[(transport, link, "none", "none")]["c2s_later_median"]
+                Bb = none_later + INDEXED_FIELD_BYTES
+                Fb = byt[k(policy)]["c2s_later_median"]
+                Rb = byt[k(reg)]["c2s_later_median"]
+                Mb = byt[k("e3_verify")]["c2s_later_median"]        # first sighting: token sent literally
+                k_b, _ = breakeven(Rb, Fb, Mb, Bb)
+                F, B = lat[k(policy)]["median_us"], lat[k("e3_verify")]["median_us"]
+                R = lat[k(reg)]["median_us"]
+                k_lat, x_lat = breakeven(R, F, B, B)
+                comp.append(dict(
+                    transport=transport, link=link, scenario=scheme, policy=policy, dafb_registers=int(registers),
+                    baseline=BASELINE_2_ANALYTIC, dafb_us=F, baseline_us=B, diff_us=round(F - B, 1),
+                    diff_pct=round(100 * (F - B) / B, 1), dafb_register_us=R, baseline_first_us=B,
+                    k_latency=fmt(k_lat), k_latency_exact=fmt(x_lat, 2), unit=byt[k(policy)]["unit"],
+                    dafb_c2s_B=Fb, baseline_c2s_B=Bb, diff_c2s_B=Fb - Bb,
+                    dafb_beats_on_bytes="yes" if Fb < Bb else "NO", k_bytes_c2s=fmt(k_b),
+                    dafb_both_B="", baseline_both_B="", k_bytes_both="-"))
 
     # ---------------- write ----------------
     for name, rows in (("e5_latency_summary.csv", list(lat.values())), ("e5_bytes_summary.csv", list(byt.values())),
@@ -198,6 +220,13 @@ def main():
                 indexed = s["c2s_later_median"] < s["token_bytes"]
                 L.append(f"  {sc:<10} later calls {s['c2s_later_median']:g} B vs no mitigation {base:g} B, "
                          f"token {s['token_bytes']} B -> token {'INDEXED' if indexed else 'NOT indexed (sent in full every call)'}")
+            none_later = byt[(transport, link, "none", "none")]["c2s_later_median"]
+            L += ["  grpcio sends all application metadata as 'literal header field without indexing' (0x00),",
+                  "  so baseline 2 is not achievable in grpcio. RFC 7541 7.1.3 also lets encoders mark authorization",
+                  "  never-indexed, as a sensitive header (compression side channels).",
+                  f"  2a indexed* = analytic bound if the token were indexed: later calls {none_later:g} + "
+                  f"{INDEXED_FIELD_BYTES} B (indexed field) = {none_later + INDEXED_FIELD_BYTES:g} B;",
+                  "  verification still runs on every call, so its latency is taken as e3_verify."]
         L += ["", "DAFB vs baselines (steady state; k* = calls after the first call to break even, R+kF <= M+kB)",
               f"{'Scheme':<10} {'Policy':<15} {'Baseline':<16} {'DAFB us':>8} {'Base us':>8} {'diff %':>7} {'k lat':>6} "
               f"{'DAFB B':>7} {'Base B':>7} {'beats B':>7} {'k B':>5} {'k both':>6}"]
