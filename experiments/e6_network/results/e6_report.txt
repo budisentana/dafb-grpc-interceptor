@@ -1,0 +1,111 @@
+E6 (paper E4): realistic links and the crossover
+input: /home/budi/projects/dafb-grpc-interceptor/.claude/worktrees/e6-e7/experiments/e6_network/results
+Paired-run comparisons: per run, (DAFB - baseline) / baseline of the run medians (or run p99);
+mean ± 95% t-interval over runs (df = runs - 1). Negative = DAFB faster.
+
+============================================================================================================
+Link L1: 1 Gbit/s, no delay; 5 run(s), 50 warm-up + 500 measured calls per scenario
+============================================================================================================
+Scheme     Arm                Median       p95       p99  HEADERS  retrans  drops  1st call
+ES256      e3_verify           499.2     531.7     556.7      434        0      0          
+ES256      token_cache         358.0     382.2     412.2      434        0      0          
+ES256      dafb_reference      378.2     405.7     429.3       98        0      0     933.9
+ML-DSA-44  e3_verify           475.6     503.1     535.2     3581        0      0          
+ML-DSA-44  token_cache         391.4     418.1     449.4     3581        0      0          
+ML-DSA-44  dafb_reference      379.1     405.4     431.5       98        0      0     938.6
+ML-DSA-65  e3_verify           507.9     536.5     564.2     4766        0      0          
+ML-DSA-65  token_cache         403.6     430.4     456.9     4766        0      0          
+ML-DSA-65  dafb_reference      378.2     403.8     435.1       98        1      0     977.3
+ML-DSA-87  e3_verify           554.2     584.3     614.1     6524        1      0          
+ML-DSA-87  token_cache         420.8     447.8     479.8     6524        0      0          
+ML-DSA-87  dafb_reference      378.8     402.5     430.6       98        1      0    1030.4
+
+DAFB reference vs baselines (paired over runs)
+Scheme        vs none: median %         median us            p99 %    vs cache: median %         median us            p99 %
+ES256              -24.2% ± 0.2      -121.1 ± 1.1     -22.9% ± 2.7           +5.7% ± 0.3       +20.3 ± 1.0      +5.1% ± 3.8
+ML-DSA-44          -20.4% ± 0.7       -96.8 ± 3.8     -16.7% ± 7.3           -3.2% ± 0.9       -12.5 ± 3.6      -2.7% ± 4.1
+ML-DSA-65          -25.5% ± 0.5      -129.7 ± 2.9     -22.6% ± 3.6           -6.3% ± 0.8       -25.3 ± 3.3      -4.4% ± 4.3
+ML-DSA-87          -31.6% ± 0.2      -175.3 ± 1.5     -29.5% ± 1.2          -10.0% ± 0.6       -42.0 ± 2.7     -10.3% ± 6.9
+
+============================================================================================================
+Link L2: 100 Mbit/s, 5 ms one-way; 5 run(s), 20 warm-up + 300 measured calls per scenario
+============================================================================================================
+Scheme     Arm                Median       p95       p99  HEADERS  retrans  drops  1st call
+ES256      e3_verify         10654.6   10729.8   10903.8      434        9      0          
+ES256      token_cache       10521.2   10636.1   10986.2      434        0      0          
+ES256      dafb_reference    10508.5   10585.7   10767.0       98        0      0   10995.8
+ML-DSA-44  e3_verify         10884.1   11019.2   11330.1     3581        0      0          
+ML-DSA-44  token_cache       10780.5   10863.7   11060.4     3581        0      0          
+ML-DSA-44  dafb_reference    10509.5   10704.2   11323.7       98       30      0   11118.1
+ML-DSA-65  e3_verify         10988.1   11379.7   11532.0     4766       28      0          
+ML-DSA-65  token_cache       10879.8   10945.7   11062.6     4766        2      0          
+ML-DSA-65  dafb_reference    10510.1   10695.6   11010.4       98        0      0   11230.8
+ML-DSA-87  e3_verify         11168.5   11261.8   11602.0     6524        0      0          
+ML-DSA-87  token_cache       10992.3   11097.9   11330.4     6524       13      0          
+ML-DSA-87  dafb_reference    10510.0   10578.6   10911.2       98        3      0   11428.0
+
+DAFB reference vs baselines (paired over runs)
+Scheme        vs none: median %         median us            p99 %    vs cache: median %         median us            p99 %
+ES256               -1.4% ± 0.1     -145.4 ± 13.3      -1.3% ± 1.9           -0.1% ± 0.1      -11.3 ± 13.6      -0.4% ± 2.8
+ML-DSA-44           -3.4% ± 0.1      -373.9 ± 5.3      -1.3% ± 9.1           -2.5% ± 0.2     -267.6 ± 21.6     +1.0% ± 10.6
+ML-DSA-65           -4.4% ± 0.1      -479.5 ± 8.4      -4.8% ± 0.9           -3.4% ± 0.1     -371.1 ± 14.9      -2.3% ± 2.2
+ML-DSA-87           -5.9% ± 0.0      -657.7 ± 3.5      -5.0% ± 2.1           -4.4% ± 0.1     -483.6 ± 10.1      -3.9% ± 2.4
+
+============================================================================================================
+Link L3: 100 Mbit/s, 5 ms one-way, 0.5% loss; 5 run(s), 20 warm-up + 300 measured calls per scenario
+============================================================================================================
+Scheme     Arm                Median       p95       p99  HEADERS  retrans  drops  1st call
+ES256      e3_verify         10662.2   10881.1   20915.3      434       21     16          
+ES256      token_cache       10520.4   10592.4   10854.2      434       15     12          
+ES256      dafb_reference    10514.7   10608.7   54294.3       98       63     22   10950.7
+ML-DSA-44  e3_verify         10888.0   11077.7  105448.6     3581       36     23          
+ML-DSA-44  token_cache       10771.3   10851.4   35094.4     3581       27     16          
+ML-DSA-44  dafb_reference    10510.9   10580.3   10780.0       98       13      7   11120.3
+ML-DSA-65  e3_verify         10987.7   11063.4   11572.2     4766       17     10          
+ML-DSA-65  token_cache       10887.5   10971.4   11214.7     4766       14     10          
+ML-DSA-65  dafb_reference    10515.7   10727.1   69979.2       98       24     18   11224.0
+ML-DSA-87  e3_verify         11172.8   11269.6   21304.3     6524       41     17          
+ML-DSA-87  token_cache       10992.3   11097.7  101670.7     6524       27     19          
+ML-DSA-87  dafb_reference    10512.0   10577.9   79075.7       98       39     20   11440.1
+
+DAFB reference vs baselines (paired over runs)
+Scheme        vs none: median %         median us            p99 %    vs cache: median %         median us            p99 %
+ES256               -1.4% ± 0.1     -148.9 ± 12.0  +448.6% ± 946.4           -0.1% ± 0.1       -6.4 ± 11.8  +480.3% ± 894.5
+ML-DSA-44           -3.5% ± 0.1      -375.2 ± 8.2    -67.7% ± 42.1           -2.4% ± 0.1     -261.5 ± 13.3    -33.5% ± 57.3
+ML-DSA-65           -4.3% ± 0.1     -474.0 ± 12.2  +393.9% ± 697.5           -3.4% ± 0.1     -373.4 ± 12.8  +494.8% ± 610.2
+ML-DSA-87           -5.9% ± 0.1      -661.7 ± 8.3 +901.9% ± 1125.8           -4.4% ± 0.0      -479.9 ± 4.2  +323.8% ± 904.8
+
+============================================================================================================
+Link L4: 20 Mbit/s, 20 ms one-way; 5 run(s), 20 warm-up + 300 measured calls per scenario
+============================================================================================================
+Scheme     Arm                Median       p95       p99  HEADERS  retrans  drops  1st call
+ES256      e3_verify         40966.3   41615.7   41643.8      434        0      0          
+ES256      token_cache       40812.5   41432.3   41450.9      434       15      0          
+ES256      dafb_reference    40989.1   41330.9   41347.8       98        0      0   41414.2
+ML-DSA-44  e3_verify         42518.3   42840.0   42867.7     3581        0      0          
+ML-DSA-44  token_cache       42080.0   42714.3   42732.1     3581        0      0          
+ML-DSA-44  dafb_reference    41002.7   41329.8   41349.7       98       81      0   42506.1
+ML-DSA-65  e3_verify         43063.9   43336.8   43369.0     4766        0      0          
+ML-DSA-65  token_cache       42560.6   43188.0   43216.9     4766        3      0          
+ML-DSA-65  dafb_reference    40847.5   41325.9   41349.4       98        2      0   43074.7
+ML-DSA-87  e3_verify         43658.9   44067.9   44097.0     6524        0      0          
+ML-DSA-87  token_cache       43235.9   43878.4   43909.0     6524       67      0          
+ML-DSA-87  dafb_reference    40989.0   41331.4   41350.4       98        0      0   43799.2
+
+DAFB reference vs baselines (paired over runs)
+Scheme        vs none: median %         median us            p99 %    vs cache: median %         median us            p99 %
+ES256               -0.4% ± 0.7    -165.1 ± 289.2      -0.4% ± 0.7           +0.0% ± 0.6     +16.9 ± 245.8      +0.1% ± 0.6
+ML-DSA-44           -3.5% ± 0.1    -1505.4 ± 33.8      -3.5% ± 0.1           -3.0% ± 0.7   -1287.7 ± 285.1      -2.9% ± 0.6
+ML-DSA-65           -4.8% ± 0.3   -2056.8 ± 137.2      -4.7% ± 0.1           -4.3% ± 0.4   -1823.0 ± 179.7      -4.2% ± 0.8
+ML-DSA-87           -6.2% ± 0.2    -2726.8 ± 72.5      -6.3% ± 0.2           -5.6% ± 0.6   -2429.1 ± 279.4      -5.6% ± 0.7
+
+Crossover check on L1: dt = 8*dB/R - delta (cache - DAFB; positive = DAFB faster)
+  R = 1 Gbit/s; dB = HEADERS cache - DAFB (E6 byte pass); delta = DAFB - cache on loopback (E5, e5_latency_summary.csv)
+Scheme      dB (B)  8dB/R (us)  delta (us)  predicted    measured (paired)
+ES256          336         2.7        23.1      -20.4          -20.3 ± 1.0
+ML-DSA-44     3483        27.9        12.7       15.2          +12.5 ± 3.6
+ML-DSA-65     4668        37.3         8.8       28.5          +25.3 ± 3.3
+ML-DSA-87     6426        51.4         7.0       44.4          +42.0 ± 2.7
+  Serialization only counts client->server HEADERS bytes at the link rate (no TCP/IP framing).
+
+Measured calls: 84000, failed: 0

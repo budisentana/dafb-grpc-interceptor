@@ -1,0 +1,760 @@
+== E6 run 1 L1 before 2026-11-23T23:50:34+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 594761957342923166
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L1 after 2026-11-23T23:50:40+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 19580897 bytes 14579 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 594761957342923166
+ Sent 19195692 bytes 14027 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L2 before 2026-11-23T23:51:00+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 581913731458143848
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L2 after 2026-11-23T23:51:51+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11820408 bytes 10204 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 581913731458143848
+ Sent 11405025 bytes 9275 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L3 before 2026-11-23T23:52:11+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 4977661201645899479
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L3 after 2026-11-23T23:53:08+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11846937 bytes 10361 pkt (dropped 44, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 4977661201645899479
+ Sent 11425527 bytes 9393 pkt (dropped 44, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L4 before 2026-11-23T23:53:28+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 5466287271503478029
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 1 L4 after 2026-11-23T23:56:24+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11912443 bytes 11385 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 5466287271503478029
+ Sent 11456058 bytes 9933 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L1 before 2026-11-23T23:56:44+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 3147428062131442116
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L1 after 2026-11-23T23:56:50+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 19580722 bytes 14576 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 3147428062131442116
+ Sent 19195666 bytes 14026 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L3 before 2026-11-23T23:57:10+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 12409442006015163793
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L3 after 2026-11-23T23:58:07+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11853609 bytes 10378 pkt (dropped 52, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 12409442006015163793
+ Sent 11439518 bytes 9446 pkt (dropped 52, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L2 before 2026-11-23T23:58:27+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 10808150736254584047
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L2 after 2026-11-23T23:59:18+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11820395 bytes 10208 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 10808150736254584047
+ Sent 11405404 bytes 9277 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L4 before 2026-11-23T23:59:38+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 6085471237320108812
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 2 L4 after 2026-11-24T00:02:33+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11916098 bytes 11387 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 6085471237320108812
+ Sent 11455356 bytes 9925 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L3 before 2026-11-24T00:02:53+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 12467924486981473963
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L3 after 2026-11-24T00:03:50+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11846074 bytes 10402 pkt (dropped 47, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 12467924486981473963
+ Sent 11425255 bytes 9428 pkt (dropped 47, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L2 before 2026-11-24T00:04:10+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 14424013144203258923
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L2 after 2026-11-24T00:05:01+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11823136 bytes 10236 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 14424013144203258923
+ Sent 11405813 bytes 9287 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L1 before 2026-11-24T00:05:21+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 7047431589953675628
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L1 after 2026-11-24T00:05:27+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 19582833 bytes 14592 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 7047431589953675628
+ Sent 19196049 bytes 14032 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L4 before 2026-11-24T00:05:47+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 6097812355897536843
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 3 L4 after 2026-11-24T00:08:44+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11917173 bytes 11403 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 6097812355897536843
+ Sent 11456158 bytes 9934 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L1 before 2026-11-24T00:09:04+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 14998476397491838716
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L1 after 2026-11-24T00:09:10+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 19581925 bytes 14594 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 14998476397491838716
+ Sent 19196588 bytes 14040 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L3 before 2026-11-24T00:09:30+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 1030900445126093700
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L3 after 2026-11-24T00:10:27+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11850180 bytes 10380 pkt (dropped 45, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 1030900445126093700
+ Sent 11433617 bytes 9425 pkt (dropped 45, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L2 before 2026-11-24T00:10:48+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 17329256796892190041
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L2 after 2026-11-24T00:11:38+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11821313 bytes 10219 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 17329256796892190041
+ Sent 11405427 bytes 9281 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L4 before 2026-11-24T00:11:58+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 5357597248108942540
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 4 L4 after 2026-11-24T00:14:53+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11921229 bytes 11420 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 5357597248108942540
+ Sent 11455702 bytes 9928 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L3 before 2026-11-24T00:15:13+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 11366219005957208775
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L3 after 2026-11-24T00:16:09+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11856369 bytes 10354 pkt (dropped 37, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms loss 0.5% rate 100Mbit seed 11366219005957208775
+ Sent 11438780 bytes 9391 pkt (dropped 37, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L4 before 2026-11-24T00:16:29+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 12323207469001748687
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L4 after 2026-11-24T00:19:27+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11914450 bytes 11378 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 20ms rate 20Mbit seed 12323207469001748687
+ Sent 11454607 bytes 9912 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L1 before 2026-11-24T00:19:47+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 612690305800805921
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L1 after 2026-11-24T00:19:53+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 19580412 bytes 14571 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 rate 1Gbit seed 612690305800805921
+ Sent 19195394 bytes 14022 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L2 before 2026-11-24T00:20:13+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 11840967273853178067
+ Sent 0 bytes 0 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
+== E6 run 5 L2 after 2026-11-24T00:21:04+08:00
+qdisc prio 1: root refcnt 2 bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ Sent 11821443 bytes 10225 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+qdisc netem 30: parent 1:3 limit 10000 delay 5ms rate 100Mbit seed 11840967273853178067
+ Sent 11406366 bytes 9295 pkt (dropped 0, overlimits 0 requeues 0) 
+ backlog 0b 0p requeues 0
+filter parent 1: protocol ip pref 1 u32 chain 0 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800: ht divisor 1 
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::800 order 2048 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 20
+filter parent 1: protocol ip pref 1 u32 chain 0 fh 800::801 order 2049 key ht 800 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 20
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801: ht divisor 1 
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::800 order 2048 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match 0000c3be/0000ffff at 40
+filter parent 1: protocol ipv6 pref 2 u32 chain 0 fh 801::801 order 2049 key ht 801 bkt 0 flowid 1:3 not_in_hw 
+  match c3be0000/ffff0000 at 40
