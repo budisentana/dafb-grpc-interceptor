@@ -274,6 +274,280 @@ ML-DSA-87  dafb_reference  2 HPACK 64 KiB      395.5    527.9   -25.1      1    
 ML-DSA-87  dafb_reference  3 token cache       395.5    397.1    -0.4     30     164    6590     yes     1      1
 ML-DSA-87  dafb_reference  2a indexed*         395.5    531.1   -25.5      1     164      85      NO never      -
 
+========================================================================================================
+Transport: plaintext, link: netem100, 5 run(s)
+========================================================================================================
+
+Latency per call (us, pooled over runs)
+Scheme     Arm                 Median      p95      p99  Verify verified  Run-median mean [95% CI]
+none       none                 353.7    387.7    422.4     0.0      0.0  353.7 [351.9, 355.5]
+ES256      e3_verify            549.7    590.7    622.8    97.7      1.0  549.8 [548.7, 550.9]
+ES256      hpack_64k            548.6    590.4    618.3    98.2      1.0  548.4 [546.7, 550.0]
+ES256      token_cache          407.2    442.2    473.5     0.0      0.0  407.2 [405.7, 408.7]
+ES256      token_cache_miss     563.3    604.0    635.4    98.2      1.0  563.2 [561.4, 565.1]
+ES256      dafb_adaptive        575.2    618.6    655.9    98.0      1.0  575.0 [572.0, 578.0]
+ES256      dafb_reference       408.2    449.5    490.0     0.0      0.0  408.4 [405.7, 411.2]
+ES256      dafb_register        620.0    676.4    710.8    98.9      1.0  620.0 [618.9, 621.1]
+EdDSA      e3_verify            556.3    604.0    632.5   112.4      1.0  555.9 [553.5, 558.4]
+EdDSA      hpack_64k            553.9    597.0    626.6   112.5      1.0  554.0 [551.1, 556.8]
+EdDSA      token_cache          407.1    436.5    456.4     0.0      0.0  407.1 [406.7, 407.5]
+EdDSA      token_cache_miss     570.9    616.1    649.5   113.1      1.0  571.1 [569.1, 573.0]
+EdDSA      dafb_adaptive        583.2    630.6    670.2   112.8      1.0  583.3 [581.1, 585.5]
+EdDSA      dafb_reference       408.0    446.3    482.3     0.0      0.0  408.0 [406.4, 409.5]
+EdDSA      dafb_register        626.7    684.9    725.5   113.2      1.0  626.8 [624.8, 628.9]
+ML-DSA-44  e3_verify            798.0    831.4    855.7    42.9      1.0  797.9 [796.2, 799.6]
+ML-DSA-44  hpack_64k            796.9    829.6    861.4    43.7      1.0  797.4 [794.5, 800.3]
+ML-DSA-44  token_cache          712.5    749.7    783.7     0.0      0.0  712.5 [710.5, 714.6]
+ML-DSA-44  token_cache_miss     813.8    852.1    924.0    42.9      1.0  814.0 [810.7, 817.3]
+ML-DSA-44  dafb_adaptive        410.8    445.6    474.4     0.0      0.0  410.8 [408.8, 412.9]
+ML-DSA-44  dafb_reference       408.5    444.7    476.4     0.0      0.0  408.4 [406.2, 410.6]
+ML-DSA-44  dafb_register        866.6    923.4    951.6    43.6      1.0  866.7 [865.4, 867.9]
+ML-DSA-65  e3_verify            937.2    971.6   1003.8    59.9      1.0  936.9 [931.4, 942.5]
+ML-DSA-65  hpack_64k            935.5    967.1    989.7    59.8      1.0  935.7 [932.5, 938.8]
+ML-DSA-65  token_cache          827.5    866.0    896.7     0.0      0.0  827.5 [825.9, 829.1]
+ML-DSA-65  token_cache_miss     956.2    985.8   1004.3    60.6      1.0  956.6 [954.1, 959.1]
+ML-DSA-65  dafb_adaptive        411.0    446.5    475.7     0.0      0.0  411.0 [409.6, 412.5]
+ML-DSA-65  dafb_reference       408.0    442.6    476.5     0.0      0.0  408.0 [407.2, 408.9]
+ML-DSA-65  dafb_register        979.6   1030.0   1055.9    60.3      1.0  979.6 [978.2, 981.1]
+ML-DSA-87  e3_verify           1099.9   1138.0   1164.7    82.5      1.0  1099.9 [1097.4, 1102.4]
+ML-DSA-87  hpack_64k           1099.4   1137.8   1159.8    82.7      1.0  1099.7 [1096.9, 1102.4]
+ML-DSA-87  token_cache          978.8   1014.7   1034.2     0.0      0.0  979.0 [975.6, 982.5]
+ML-DSA-87  token_cache_miss    1121.5   1160.5   1183.8    82.8      1.0  1121.2 [1116.8, 1125.7]
+ML-DSA-87  dafb_adaptive        411.1    448.0    479.3     0.0      0.0  410.9 [409.1, 412.7]
+ML-DSA-87  dafb_reference       407.6    443.9    475.7     0.0      0.0  407.8 [406.4, 409.1]
+ML-DSA-87  dafb_register       1170.9   1218.1   1245.6    83.2      1.0  1170.8 [1168.0, 1173.6]
+
+HEADERS bytes (E2 relay method) per call (median over runs; later = calls 2-10 [min-max])
+Scheme     Arm                token  c2s 1st          c2s later  s2c 1st s2c later  modes
+none       none                   0      269         18 [18-18]      141        52  none / none
+ES256      e3_verify            398      685      434 [434-434]      146        57  bearer / bearer
+ES256      hpack_64k            398      689      434 [434-434]      147        57  bearer / bearer
+ES256      token_cache          398      685      434 [434-434]      147        52  bearer / bearer
+ES256      token_cache_miss     398      685      434 [434-434]      146        57  bearer / bearer
+ES256      dafb_adaptive        398      705      454 [454-474]      146        57  inline / inline
+ES256      dafb_reference       398      707         98 [98-98]      227        52  register / reference
+ES256      dafb_register        398      707      456 [456-456]      227       138  register / register
+EdDSA      e3_verify            398      685      434 [434-454]      146        57  bearer / bearer
+EdDSA      hpack_64k            398      689      434 [434-454]      146        57  bearer / bearer
+EdDSA      token_cache          398      685      434 [434-434]      146        52  bearer / bearer
+EdDSA      token_cache_miss     398      685      434 [434-434]      146        57  bearer / bearer
+EdDSA      dafb_adaptive        398      705      454 [454-474]      146        57  inline / inline
+EdDSA      dafb_reference       398      707         98 [98-98]      227        52  register / reference
+EdDSA      dafb_register        398      707      456 [456-456]      227       138  register / register
+ML-DSA-44  e3_verify           3545     3832   3581 [3581-3601]      145        56  bearer / bearer
+ML-DSA-44  hpack_64k           3545     3836   3581 [3581-3581]      146        56  bearer / bearer
+ML-DSA-44  token_cache         3545     3832   3581 [3581-3581]      146        52  bearer / bearer
+ML-DSA-44  token_cache_miss    3545     3832   3581 [3581-3581]      145        56  bearer / bearer
+ML-DSA-44  dafb_adaptive       3545     3854         98 [98-98]      226        52  register / reference
+ML-DSA-44  dafb_reference      3545     3854        98 [98-118]      226        52  register / reference
+ML-DSA-44  dafb_register       3545     3854   3603 [3603-3603]      226       137  register / register
+ML-DSA-65  e3_verify           4730     5017   4766 [4766-4766]      146        56  bearer / bearer
+ML-DSA-65  hpack_64k           4730     5021   4766 [4766-4786]      146        56  bearer / bearer
+ML-DSA-65  token_cache         4730     5017   4766 [4766-4766]      146        52  bearer / bearer
+ML-DSA-65  token_cache_miss    4730     5017   4766 [4766-4766]      146        56  bearer / bearer
+ML-DSA-65  dafb_adaptive       4730     5039        98 [98-118]      226        52  register / reference
+ML-DSA-65  dafb_reference      4730     5036        98 [98-118]      226        52  register / reference
+ML-DSA-65  dafb_register       4730     5039   4788 [4788-4788]      226       137  register / register
+ML-DSA-87  e3_verify           6488     6775   6524 [6524-6544]      146        56  bearer / bearer
+ML-DSA-87  hpack_64k           6488     6779   6524 [6524-6524]      146        56  bearer / bearer
+ML-DSA-87  token_cache         6488     6775   6524 [6524-6544]      146        52  bearer / bearer
+ML-DSA-87  token_cache_miss    6488     6775   6524 [6524-6524]      146        56  bearer / bearer
+ML-DSA-87  dafb_adaptive       6488     6797         98 [98-98]      227        52  register / reference
+ML-DSA-87  dafb_reference      6488     6797        98 [98-118]      227        52  register / reference
+ML-DSA-87  dafb_register       6488     6797   6546 [6546-6546]      227       137  register / register
+
+Baseline 2 indexing check: is the token absent from later calls with 64 KiB tables?
+  ES256      later calls 434 B vs no mitigation 434 B, token 398 B -> token NOT indexed (sent in full every call)
+  EdDSA      later calls 434 B vs no mitigation 434 B, token 398 B -> token NOT indexed (sent in full every call)
+  ML-DSA-44  later calls 3581 B vs no mitigation 3581 B, token 3545 B -> token NOT indexed (sent in full every call)
+  ML-DSA-65  later calls 4766 B vs no mitigation 4766 B, token 4730 B -> token NOT indexed (sent in full every call)
+  ML-DSA-87  later calls 6524 B vs no mitigation 6524 B, token 6488 B -> token NOT indexed (sent in full every call)
+  grpcio sends all application metadata as 'literal header field without indexing' (0x00),
+  so baseline 2 is not achievable in grpcio. RFC 7541 7.1.3 also lets encoders mark authorization
+  never-indexed, as a sensitive header (compression side channels).
+  2a indexed* = analytic bound if the token were indexed: later calls 18 + 1 B (indexed field) = 19 B;
+  verification still runs on every call, so its latency is taken as e3_verify.
+
+DAFB vs baselines (steady state; k* = calls after the first call to break even, R+kF <= M+kB)
+Scheme     Policy          Baseline          DAFB us  Base us  diff %  k lat  DAFB B  Base B beats B   k B k both
+ES256      dafb_adaptive   1 no mitigation     575.2    549.7     4.6  never     454     434      NO never  never
+ES256      dafb_adaptive   2 HPACK 64 KiB      575.2    548.6     4.8  never     454     434      NO never  never
+ES256      dafb_adaptive   3 token cache       575.2    407.2    41.3  never     454     434      NO never  never
+ES256      dafb_adaptive   2a indexed*         575.2    549.7     4.6  never     454      19      NO never      -
+ES256      dafb_reference  1 no mitigation     408.2    549.7   -25.7      1      98     434     yes     1      1
+ES256      dafb_reference  2 HPACK 64 KiB      408.2    548.6   -25.6      1      98     434     yes     1      1
+ES256      dafb_reference  3 token cache       408.2    407.2     0.2  never      98     434     yes     1      1
+ES256      dafb_reference  2a indexed*         408.2    549.7   -25.7      1      98      19      NO never      -
+EdDSA      dafb_adaptive   1 no mitigation     583.2    556.3     4.8  never     454     434      NO never  never
+EdDSA      dafb_adaptive   2 HPACK 64 KiB      583.2    553.9     5.3  never     454     434      NO never  never
+EdDSA      dafb_adaptive   3 token cache       583.2    407.1    43.3  never     454     434      NO never  never
+EdDSA      dafb_adaptive   2a indexed*         583.2    556.3     4.8  never     454      19      NO never      -
+EdDSA      dafb_reference  1 no mitigation     408.0    556.3   -26.7      1      98     434     yes     1      1
+EdDSA      dafb_reference  2 HPACK 64 KiB      408.0    553.9   -26.3      1      98     434     yes     1      1
+EdDSA      dafb_reference  3 token cache       408.0    407.1     0.2  never      98     434     yes     1      1
+EdDSA      dafb_reference  2a indexed*         408.0    556.3   -26.7      1      98      19      NO never      -
+ML-DSA-44  dafb_adaptive   1 no mitigation     410.8    798.0   -48.5      1      98    3581     yes     1      1
+ML-DSA-44  dafb_adaptive   2 HPACK 64 KiB      410.8    796.9   -48.5      1      98    3581     yes     1      1
+ML-DSA-44  dafb_adaptive   3 token cache       410.8    712.5   -42.3      1      98    3581     yes     1      1
+ML-DSA-44  dafb_adaptive   2a indexed*         410.8    798.0   -48.5      1      98      19      NO never      -
+ML-DSA-44  dafb_reference  1 no mitigation     408.5    798.0   -48.8      1      98    3581     yes     1      1
+ML-DSA-44  dafb_reference  2 HPACK 64 KiB      408.5    796.9   -48.7      1      98    3581     yes     1      1
+ML-DSA-44  dafb_reference  3 token cache       408.5    712.5   -42.7      1      98    3581     yes     1      1
+ML-DSA-44  dafb_reference  2a indexed*         408.5    798.0   -48.8      1      98      19      NO never      -
+ML-DSA-65  dafb_adaptive   1 no mitigation     411.0    937.2   -56.1      1      98    4766     yes     1      1
+ML-DSA-65  dafb_adaptive   2 HPACK 64 KiB      411.0    935.5   -56.1      1      98    4766     yes     1      1
+ML-DSA-65  dafb_adaptive   3 token cache       411.0    827.5   -50.3      1      98    4766     yes     1      1
+ML-DSA-65  dafb_adaptive   2a indexed*         411.0    937.2   -56.1      1      98      19      NO never      -
+ML-DSA-65  dafb_reference  1 no mitigation     408.0    937.2   -56.5      1      98    4766     yes     1      1
+ML-DSA-65  dafb_reference  2 HPACK 64 KiB      408.0    935.5   -56.4      1      98    4766     yes     1      1
+ML-DSA-65  dafb_reference  3 token cache       408.0    827.5   -50.7      1      98    4766     yes     1      1
+ML-DSA-65  dafb_reference  2a indexed*         408.0    937.2   -56.5      1      98      19      NO never      -
+ML-DSA-87  dafb_adaptive   1 no mitigation     411.1   1099.9   -62.6      1      98    6524     yes     1      1
+ML-DSA-87  dafb_adaptive   2 HPACK 64 KiB      411.1   1099.4   -62.6      1      98    6524     yes     1      1
+ML-DSA-87  dafb_adaptive   3 token cache       411.1    978.8   -58.0      1      98    6524     yes     1      1
+ML-DSA-87  dafb_adaptive   2a indexed*         411.1   1099.9   -62.6      1      98      19      NO never      -
+ML-DSA-87  dafb_reference  1 no mitigation     407.6   1099.9   -62.9      1      98    6524     yes     1      1
+ML-DSA-87  dafb_reference  2 HPACK 64 KiB      407.6   1099.4   -62.9      1      98    6524     yes     1      1
+ML-DSA-87  dafb_reference  3 token cache       407.6    978.8   -58.4      1      98    6524     yes     1      1
+ML-DSA-87  dafb_reference  2a indexed*         407.6   1099.9   -62.9      1      98      19      NO never      -
+
+========================================================================================================
+Transport: tls, link: netem100, 5 run(s)
+========================================================================================================
+
+Latency per call (us, pooled over runs)
+Scheme     Arm                 Median      p95      p99  Verify verified  Run-median mean [95% CI]
+none       none                 381.4    408.6    432.4     0.0      0.0  381.3 [379.9, 382.7]
+ES256      e3_verify            576.4    613.8    635.8    98.3      1.0  576.4 [575.7, 577.2]
+ES256      hpack_64k            575.0    609.3    632.4    98.1      1.0  574.8 [572.7, 576.9]
+ES256      token_cache          436.4    469.7    498.9     0.0      0.0  436.4 [433.4, 439.4]
+ES256      token_cache_miss     591.0    633.8    671.5    98.7      1.0  591.1 [588.1, 594.2]
+ES256      dafb_adaptive        603.1    641.1    664.4    98.6      1.0  603.1 [601.7, 604.4]
+ES256      dafb_reference       436.8    546.9   2354.3     0.0      0.0  439.7 [424.9, 454.5]
+ES256      dafb_register        648.1    690.3    725.0    99.3      1.0  648.3 [647.2, 649.3]
+EdDSA      e3_verify            583.5    619.4    640.7   112.2      1.0  583.5 [581.6, 585.3]
+EdDSA      hpack_64k            581.6    617.3    638.3   112.3      1.0  581.6 [578.5, 584.6]
+EdDSA      token_cache          434.8    464.6    491.1     0.0      0.0  434.9 [432.4, 437.3]
+EdDSA      token_cache_miss     599.0    643.0    696.1   113.4      1.0  599.2 [594.9, 603.5]
+EdDSA      dafb_adaptive        610.0    651.0    674.0   112.5      1.0  610.2 [607.3, 613.1]
+EdDSA      dafb_reference       433.6    461.4    482.4     0.0      0.0  433.4 [431.3, 435.5]
+EdDSA      dafb_register        655.3    705.3    733.1   112.9      1.0  655.4 [653.7, 657.1]
+ML-DSA-44  e3_verify            829.7    867.6    891.5    43.4      1.0  829.6 [827.1, 832.1]
+ML-DSA-44  hpack_64k            826.8    864.3    888.3    42.6      1.0  827.0 [825.3, 828.6]
+ML-DSA-44  token_cache          744.7    788.1    820.9     0.0      0.0  744.7 [743.2, 746.2]
+ML-DSA-44  token_cache_miss     844.5    891.2    930.5    42.8      1.0  844.5 [841.7, 847.3]
+ML-DSA-44  dafb_adaptive        436.6    465.8    486.9     0.0      0.0  436.5 [435.5, 437.5]
+ML-DSA-44  dafb_reference       434.0    463.5    481.9     0.0      0.0  434.0 [432.8, 435.3]
+ML-DSA-44  dafb_register        899.7    951.2    988.0    44.1      1.0  899.9 [897.0, 902.8]
+ML-DSA-65  e3_verify            970.4   1005.6   1024.9    60.0      1.0  970.3 [966.9, 973.7]
+ML-DSA-65  hpack_64k            967.9   1002.4   1026.1    59.7      1.0  967.8 [965.8, 969.7]
+ML-DSA-65  token_cache          859.9    898.5    924.0     0.0      0.0  859.6 [855.1, 864.0]
+ML-DSA-65  token_cache_miss     984.1   1029.3   1058.9    60.3      1.0  983.8 [979.8, 987.8]
+ML-DSA-65  dafb_adaptive        436.1    466.0    486.1     0.0      0.0  436.3 [434.7, 437.8]
+ML-DSA-65  dafb_reference       433.1    462.9    481.5     0.0      0.0  433.1 [431.5, 434.8]
+ML-DSA-65  dafb_register        980.0   1055.6   1106.9    60.5      1.0  980.5 [976.1, 984.8]
+ML-DSA-87  e3_verify           1136.3   1182.0   1205.1    82.9      1.0  1136.3 [1135.0, 1137.6]
+ML-DSA-87  hpack_64k           1134.4   1180.0   1202.5    82.4      1.0  1134.7 [1132.9, 1136.6]
+ML-DSA-87  token_cache          983.8   1040.0   1092.1     0.0      0.0  984.8 [978.8, 990.9]
+ML-DSA-87  token_cache_miss    1155.4   1206.6   1281.0    82.9      1.0  1155.1 [1152.6, 1157.6]
+ML-DSA-87  dafb_adaptive        438.0    483.2    664.3     0.0      0.0  439.2 [430.7, 447.7]
+ML-DSA-87  dafb_reference       434.2    471.9    531.0     0.0      0.0  434.2 [431.0, 437.4]
+ML-DSA-87  dafb_register       1206.7   1259.5   1294.4    83.6      1.0  1206.4 [1204.5, 1208.3]
+
+TCP payload bytes (TLS) per call (median over runs; later = calls 2-10 [min-max])
+Scheme     Arm                token  c2s 1st          c2s later  s2c 1st s2c later  modes
+none       none                   0      407         84 [84-84]      272       105  none / none
+ES256      e3_verify            398      823      500 [500-500]      277       110  bearer / bearer
+ES256      hpack_64k            398      827      500 [500-520]      278       110  bearer / bearer
+ES256      token_cache          398      823      500 [500-500]      277       105  bearer / bearer
+ES256      token_cache_miss     398      823      500 [500-500]      278       110  bearer / bearer
+ES256      dafb_adaptive        398      843      520 [520-520]      277       110  inline / inline
+ES256      dafb_reference       398      845      164 [164-164]      381       105  register / reference
+ES256      dafb_register        398      845      522 [522-522]      380       213  register / register
+EdDSA      e3_verify            398      823      500 [500-500]      277       110  bearer / bearer
+EdDSA      hpack_64k            398      827      500 [500-500]      277       110  bearer / bearer
+EdDSA      token_cache          398      823      500 [500-520]      277       105  bearer / bearer
+EdDSA      token_cache_miss     398      823      500 [500-520]      277       110  bearer / bearer
+EdDSA      dafb_adaptive        398      843      520 [520-520]      277       110  inline / inline
+EdDSA      dafb_reference       398      845      164 [164-184]      380       105  register / reference
+EdDSA      dafb_register        398      845      522 [522-522]      380       213  register / register
+ML-DSA-44  e3_verify           3545     3970   3647 [3647-3647]      276       109  bearer / bearer
+ML-DSA-44  hpack_64k           3545     3974   3647 [3647-3647]      277       109  bearer / bearer
+ML-DSA-44  token_cache         3545     3970   3647 [3647-3647]      277       105  bearer / bearer
+ML-DSA-44  token_cache_miss    3545     3970   3647 [3647-3647]      277       109  bearer / bearer
+ML-DSA-44  dafb_adaptive       3545     3992      164 [164-184]      379       105  register / reference
+ML-DSA-44  dafb_reference      3545     3992      164 [164-164]      379       105  register / reference
+ML-DSA-44  dafb_register       3545     3992   3669 [3669-3669]      380       212  register / register
+ML-DSA-65  e3_verify           4730     5155   4832 [4832-4852]      276       109  bearer / bearer
+ML-DSA-65  hpack_64k           4730     5159   4832 [4832-4832]      277       109  bearer / bearer
+ML-DSA-65  token_cache         4730     5155   4832 [4832-4832]      276       105  bearer / bearer
+ML-DSA-65  token_cache_miss    4730     5155   4832 [4832-4832]      277       109  bearer / bearer
+ML-DSA-65  dafb_adaptive       4730     5177      164 [164-184]      380       105  register / reference
+ML-DSA-65  dafb_reference      4730     5177      164 [164-164]      379       105  register / reference
+ML-DSA-65  dafb_register       4730     5177   4854 [4854-4854]      379       212  register / register
+ML-DSA-87  e3_verify           6488     6913   6590 [6590-6590]      277       109  bearer / bearer
+ML-DSA-87  hpack_64k           6488     6917   6590 [6590-6590]      277       109  bearer / bearer
+ML-DSA-87  token_cache         6488     6913   6590 [6590-6590]      277       105  bearer / bearer
+ML-DSA-87  token_cache_miss    6488     6913   6590 [6590-6590]      277       109  bearer / bearer
+ML-DSA-87  dafb_adaptive       6488     6935      164 [164-164]      380       105  register / reference
+ML-DSA-87  dafb_reference      6488     6935      164 [164-184]      380       105  register / reference
+ML-DSA-87  dafb_register       6488     6935   6612 [6612-6612]      380       212  register / register
+
+Baseline 2 indexing check: is the token absent from later calls with 64 KiB tables?
+  ES256      later calls 500 B vs no mitigation 500 B, token 398 B -> token NOT indexed (sent in full every call)
+  EdDSA      later calls 500 B vs no mitigation 500 B, token 398 B -> token NOT indexed (sent in full every call)
+  ML-DSA-44  later calls 3647 B vs no mitigation 3647 B, token 3545 B -> token NOT indexed (sent in full every call)
+  ML-DSA-65  later calls 4832 B vs no mitigation 4832 B, token 4730 B -> token NOT indexed (sent in full every call)
+  ML-DSA-87  later calls 6590 B vs no mitigation 6590 B, token 6488 B -> token NOT indexed (sent in full every call)
+  grpcio sends all application metadata as 'literal header field without indexing' (0x00),
+  so baseline 2 is not achievable in grpcio. RFC 7541 7.1.3 also lets encoders mark authorization
+  never-indexed, as a sensitive header (compression side channels).
+  2a indexed* = analytic bound if the token were indexed: later calls 84 + 1 B (indexed field) = 85 B;
+  verification still runs on every call, so its latency is taken as e3_verify.
+
+DAFB vs baselines (steady state; k* = calls after the first call to break even, R+kF <= M+kB)
+Scheme     Policy          Baseline          DAFB us  Base us  diff %  k lat  DAFB B  Base B beats B   k B k both
+ES256      dafb_adaptive   1 no mitigation     603.1    576.4     4.6  never     520     500      NO never  never
+ES256      dafb_adaptive   2 HPACK 64 KiB      603.1    575.0     4.9  never     520     500      NO never  never
+ES256      dafb_adaptive   3 token cache       603.1    436.4    38.2  never     520     500      NO never  never
+ES256      dafb_adaptive   2a indexed*         603.1    576.4     4.6  never     520      85      NO never      -
+ES256      dafb_reference  1 no mitigation     436.8    576.4   -24.2      1     164     500     yes     1      1
+ES256      dafb_reference  2 HPACK 64 KiB      436.8    575.0   -24.0      1     164     500     yes     1      1
+ES256      dafb_reference  3 token cache       436.8    436.4     0.1  never     164     500     yes     1      1
+ES256      dafb_reference  2a indexed*         436.8    576.4   -24.2      1     164      85      NO never      -
+EdDSA      dafb_adaptive   1 no mitigation     610.0    583.5     4.5  never     520     500      NO never  never
+EdDSA      dafb_adaptive   2 HPACK 64 KiB      610.0    581.6     4.9  never     520     500      NO never  never
+EdDSA      dafb_adaptive   3 token cache       610.0    434.8    40.3  never     520     500      NO never  never
+EdDSA      dafb_adaptive   2a indexed*         610.0    583.5     4.5  never     520      85      NO never      -
+EdDSA      dafb_reference  1 no mitigation     433.6    583.5   -25.7      1     164     500     yes     1      1
+EdDSA      dafb_reference  2 HPACK 64 KiB      433.6    581.6   -25.4      1     164     500     yes     1      1
+EdDSA      dafb_reference  3 token cache       433.6    434.8    -0.3     47     164     500     yes     1      1
+EdDSA      dafb_reference  2a indexed*         433.6    583.5   -25.7      1     164      85      NO never      -
+ML-DSA-44  dafb_adaptive   1 no mitigation     436.6    829.7   -47.4      1     164    3647     yes     1      1
+ML-DSA-44  dafb_adaptive   2 HPACK 64 KiB      436.6    826.8   -47.2      1     164    3647     yes     1      1
+ML-DSA-44  dafb_adaptive   3 token cache       436.6    744.7   -41.4      1     164    3647     yes     1      1
+ML-DSA-44  dafb_adaptive   2a indexed*         436.6    829.7   -47.4      1     164      85      NO never      -
+ML-DSA-44  dafb_reference  1 no mitigation     434.0    829.7   -47.7      1     164    3647     yes     1      1
+ML-DSA-44  dafb_reference  2 HPACK 64 KiB      434.0    826.8   -47.5      1     164    3647     yes     1      1
+ML-DSA-44  dafb_reference  3 token cache       434.0    744.7   -41.7      1     164    3647     yes     1      1
+ML-DSA-44  dafb_reference  2a indexed*         434.0    829.7   -47.7      1     164      85      NO never      -
+ML-DSA-65  dafb_adaptive   1 no mitigation     436.1    970.4   -55.1      1     164    4832     yes     1      1
+ML-DSA-65  dafb_adaptive   2 HPACK 64 KiB      436.1    967.9   -54.9      1     164    4832     yes     1      1
+ML-DSA-65  dafb_adaptive   3 token cache       436.1    859.9   -49.3      0     164    4832     yes     1      1
+ML-DSA-65  dafb_adaptive   2a indexed*         436.1    970.4   -55.1      1     164      85      NO never      -
+ML-DSA-65  dafb_reference  1 no mitigation     433.1    970.4   -55.4      1     164    4832     yes     1      1
+ML-DSA-65  dafb_reference  2 HPACK 64 KiB      433.1    967.9   -55.3      1     164    4832     yes     1      1
+ML-DSA-65  dafb_reference  3 token cache       433.1    859.9   -49.6      0     164    4832     yes     1      1
+ML-DSA-65  dafb_reference  2a indexed*         433.1    970.4   -55.4      1     164      85      NO never      -
+ML-DSA-87  dafb_adaptive   1 no mitigation     438.0   1136.3   -61.5      1     164    6590     yes     1      1
+ML-DSA-87  dafb_adaptive   2 HPACK 64 KiB      438.0   1134.4   -61.4      1     164    6590     yes     1      1
+ML-DSA-87  dafb_adaptive   3 token cache       438.0    983.8   -55.5      1     164    6590     yes     1      1
+ML-DSA-87  dafb_adaptive   2a indexed*         438.0   1136.3   -61.5      1     164      85      NO never      -
+ML-DSA-87  dafb_reference  1 no mitigation     434.2   1136.3   -61.8      1     164    6590     yes     1      1
+ML-DSA-87  dafb_reference  2 HPACK 64 KiB      434.2   1134.4   -61.7      1     164    6590     yes     1      1
+ML-DSA-87  dafb_reference  3 token cache       434.2    983.8   -55.9      1     164    6590     yes     1      1
+ML-DSA-87  dafb_reference  2a indexed*         434.2   1136.3   -61.8      1     164      85      NO never      -
+
 Checks
   none (run medians within 10%, verification as expected, no rejected handles, no failures)
-Measured calls: 180000
+Measured calls: 360000

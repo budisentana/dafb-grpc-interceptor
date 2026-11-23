@@ -79,3 +79,83 @@ tls,loopback,ML-DSA-87,dafb_reference,1,1 no mitigation,395.5,531.1,-135.6,-25.5
 tls,loopback,ML-DSA-87,dafb_reference,1,2 HPACK 64 KiB,395.5,527.9,-132.4,-25.1,594.8,527.9,1,0.51,TCP payload,164,6590,-6426,yes,1,269,6699,1
 tls,loopback,ML-DSA-87,dafb_reference,1,3 token cache,395.5,397.1,-1.6,-0.4,594.8,547.0,30,29.87,TCP payload,164,6590,-6426,yes,1,269,6695,1
 tls,loopback,ML-DSA-87,dafb_reference,1,2a indexed*,395.5,531.1,-135.6,-25.5,594.8,531.1,1,0.47,TCP payload,164,85,79,NO,never,,,-
+plaintext,netem100,ES256,dafb_adaptive,0,1 no mitigation,575.2,549.7,25.5,4.6,575.2,549.7,never,never,HEADERS,454,434,20,NO,never,511,491,never
+plaintext,netem100,ES256,dafb_adaptive,0,2 HPACK 64 KiB,575.2,548.6,26.6,4.8,575.2,548.6,never,never,HEADERS,454,434,20,NO,never,511,491,never
+plaintext,netem100,ES256,dafb_adaptive,0,3 token cache,575.2,407.2,168.0,41.3,575.2,563.3,never,never,HEADERS,454,434,20,NO,never,511,486,never
+plaintext,netem100,ES256,dafb_adaptive,0,2a indexed*,575.2,549.7,25.5,4.6,575.2,549.7,never,never,HEADERS,454,19,435,NO,never,,,-
+plaintext,netem100,ES256,dafb_reference,1,1 no mitigation,408.2,549.7,-141.5,-25.7,620.0,549.7,1,0.50,HEADERS,98,434,-336,yes,1,150,491,1
+plaintext,netem100,ES256,dafb_reference,1,2 HPACK 64 KiB,408.2,548.6,-140.4,-25.6,620.0,548.6,1,0.51,HEADERS,98,434,-336,yes,1,150,491,1
+plaintext,netem100,ES256,dafb_reference,1,3 token cache,408.2,407.2,1.0,0.2,620.0,563.3,never,never,HEADERS,98,434,-336,yes,1,150,486,1
+plaintext,netem100,ES256,dafb_reference,1,2a indexed*,408.2,549.7,-141.5,-25.7,620.0,549.7,1,0.50,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,EdDSA,dafb_adaptive,0,1 no mitigation,583.2,556.3,26.9,4.8,583.2,556.3,never,never,HEADERS,454,434,20,NO,never,511,491,never
+plaintext,netem100,EdDSA,dafb_adaptive,0,2 HPACK 64 KiB,583.2,553.9,29.3,5.3,583.2,553.9,never,never,HEADERS,454,434,20,NO,never,511,491,never
+plaintext,netem100,EdDSA,dafb_adaptive,0,3 token cache,583.2,407.1,176.1,43.3,583.2,570.9,never,never,HEADERS,454,434,20,NO,never,511,486,never
+plaintext,netem100,EdDSA,dafb_adaptive,0,2a indexed*,583.2,556.3,26.9,4.8,583.2,556.3,never,never,HEADERS,454,19,435,NO,never,,,-
+plaintext,netem100,EdDSA,dafb_reference,1,1 no mitigation,408.0,556.3,-148.3,-26.7,626.7,556.3,1,0.47,HEADERS,98,434,-336,yes,1,150,491,1
+plaintext,netem100,EdDSA,dafb_reference,1,2 HPACK 64 KiB,408.0,553.9,-145.9,-26.3,626.7,553.9,1,0.50,HEADERS,98,434,-336,yes,1,150,491,1
+plaintext,netem100,EdDSA,dafb_reference,1,3 token cache,408.0,407.1,0.9,0.2,626.7,570.9,never,never,HEADERS,98,434,-336,yes,1,150,486,1
+plaintext,netem100,EdDSA,dafb_reference,1,2a indexed*,408.0,556.3,-148.3,-26.7,626.7,556.3,1,0.47,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,ML-DSA-44,dafb_adaptive,1,1 no mitigation,410.8,798.0,-387.2,-48.5,866.6,798.0,1,0.18,HEADERS,98,3581,-3483,yes,1,150,3637,1
+plaintext,netem100,ML-DSA-44,dafb_adaptive,1,2 HPACK 64 KiB,410.8,796.9,-386.1,-48.5,866.6,796.9,1,0.18,HEADERS,98,3581,-3483,yes,1,150,3637,1
+plaintext,netem100,ML-DSA-44,dafb_adaptive,1,3 token cache,410.8,712.5,-301.7,-42.3,866.6,813.8,1,0.18,HEADERS,98,3581,-3483,yes,1,150,3633,1
+plaintext,netem100,ML-DSA-44,dafb_adaptive,1,2a indexed*,410.8,798.0,-387.2,-48.5,866.6,798.0,1,0.18,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,ML-DSA-44,dafb_reference,1,1 no mitigation,408.5,798.0,-389.5,-48.8,866.6,798.0,1,0.18,HEADERS,98,3581,-3483,yes,1,150,3637,1
+plaintext,netem100,ML-DSA-44,dafb_reference,1,2 HPACK 64 KiB,408.5,796.9,-388.4,-48.7,866.6,796.9,1,0.18,HEADERS,98,3581,-3483,yes,1,150,3637,1
+plaintext,netem100,ML-DSA-44,dafb_reference,1,3 token cache,408.5,712.5,-304.0,-42.7,866.6,813.8,1,0.17,HEADERS,98,3581,-3483,yes,1,150,3633,1
+plaintext,netem100,ML-DSA-44,dafb_reference,1,2a indexed*,408.5,798.0,-389.5,-48.8,866.6,798.0,1,0.18,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,ML-DSA-65,dafb_adaptive,1,1 no mitigation,411.0,937.2,-526.2,-56.1,979.6,937.2,1,0.08,HEADERS,98,4766,-4668,yes,1,150,4822,1
+plaintext,netem100,ML-DSA-65,dafb_adaptive,1,2 HPACK 64 KiB,411.0,935.5,-524.5,-56.1,979.6,935.5,1,0.08,HEADERS,98,4766,-4668,yes,1,150,4822,1
+plaintext,netem100,ML-DSA-65,dafb_adaptive,1,3 token cache,411.0,827.5,-416.5,-50.3,979.6,956.2,1,0.06,HEADERS,98,4766,-4668,yes,1,150,4818,1
+plaintext,netem100,ML-DSA-65,dafb_adaptive,1,2a indexed*,411.0,937.2,-526.2,-56.1,979.6,937.2,1,0.08,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,ML-DSA-65,dafb_reference,1,1 no mitigation,408.0,937.2,-529.2,-56.5,979.6,937.2,1,0.08,HEADERS,98,4766,-4668,yes,1,150,4822,1
+plaintext,netem100,ML-DSA-65,dafb_reference,1,2 HPACK 64 KiB,408.0,935.5,-527.5,-56.4,979.6,935.5,1,0.08,HEADERS,98,4766,-4668,yes,1,150,4822,1
+plaintext,netem100,ML-DSA-65,dafb_reference,1,3 token cache,408.0,827.5,-419.5,-50.7,979.6,956.2,1,0.06,HEADERS,98,4766,-4668,yes,1,150,4818,1
+plaintext,netem100,ML-DSA-65,dafb_reference,1,2a indexed*,408.0,937.2,-529.2,-56.5,979.6,937.2,1,0.08,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,ML-DSA-87,dafb_adaptive,1,1 no mitigation,411.1,1099.9,-688.8,-62.6,1170.9,1099.9,1,0.10,HEADERS,98,6524,-6426,yes,1,150,6580,1
+plaintext,netem100,ML-DSA-87,dafb_adaptive,1,2 HPACK 64 KiB,411.1,1099.4,-688.3,-62.6,1170.9,1099.4,1,0.10,HEADERS,98,6524,-6426,yes,1,150,6580,1
+plaintext,netem100,ML-DSA-87,dafb_adaptive,1,3 token cache,411.1,978.8,-567.7,-58.0,1170.9,1121.5,1,0.09,HEADERS,98,6524,-6426,yes,1,150,6576,1
+plaintext,netem100,ML-DSA-87,dafb_adaptive,1,2a indexed*,411.1,1099.9,-688.8,-62.6,1170.9,1099.9,1,0.10,HEADERS,98,19,79,NO,never,,,-
+plaintext,netem100,ML-DSA-87,dafb_reference,1,1 no mitigation,407.6,1099.9,-692.3,-62.9,1170.9,1099.9,1,0.10,HEADERS,98,6524,-6426,yes,1,150,6580,1
+plaintext,netem100,ML-DSA-87,dafb_reference,1,2 HPACK 64 KiB,407.6,1099.4,-691.8,-62.9,1170.9,1099.4,1,0.10,HEADERS,98,6524,-6426,yes,1,150,6580,1
+plaintext,netem100,ML-DSA-87,dafb_reference,1,3 token cache,407.6,978.8,-571.2,-58.4,1170.9,1121.5,1,0.09,HEADERS,98,6524,-6426,yes,1,150,6576,1
+plaintext,netem100,ML-DSA-87,dafb_reference,1,2a indexed*,407.6,1099.9,-692.3,-62.9,1170.9,1099.9,1,0.10,HEADERS,98,19,79,NO,never,,,-
+tls,netem100,ES256,dafb_adaptive,0,1 no mitigation,603.1,576.4,26.7,4.6,603.1,576.4,never,never,TCP payload,520,500,20,NO,never,630,610,never
+tls,netem100,ES256,dafb_adaptive,0,2 HPACK 64 KiB,603.1,575.0,28.1,4.9,603.1,575.0,never,never,TCP payload,520,500,20,NO,never,630,610,never
+tls,netem100,ES256,dafb_adaptive,0,3 token cache,603.1,436.4,166.7,38.2,603.1,591.0,never,never,TCP payload,520,500,20,NO,never,630,605,never
+tls,netem100,ES256,dafb_adaptive,0,2a indexed*,603.1,576.4,26.7,4.6,603.1,576.4,never,never,TCP payload,520,85,435,NO,never,,,-
+tls,netem100,ES256,dafb_reference,1,1 no mitigation,436.8,576.4,-139.6,-24.2,648.1,576.4,1,0.51,TCP payload,164,500,-336,yes,1,269,610,1
+tls,netem100,ES256,dafb_reference,1,2 HPACK 64 KiB,436.8,575.0,-138.2,-24.0,648.1,575.0,1,0.53,TCP payload,164,500,-336,yes,1,269,610,1
+tls,netem100,ES256,dafb_reference,1,3 token cache,436.8,436.4,0.4,0.1,648.1,591.0,never,never,TCP payload,164,500,-336,yes,1,269,605,1
+tls,netem100,ES256,dafb_reference,1,2a indexed*,436.8,576.4,-139.6,-24.2,648.1,576.4,1,0.51,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,EdDSA,dafb_adaptive,0,1 no mitigation,610.0,583.5,26.5,4.5,610.0,583.5,never,never,TCP payload,520,500,20,NO,never,630,610,never
+tls,netem100,EdDSA,dafb_adaptive,0,2 HPACK 64 KiB,610.0,581.6,28.4,4.9,610.0,581.6,never,never,TCP payload,520,500,20,NO,never,630,610,never
+tls,netem100,EdDSA,dafb_adaptive,0,3 token cache,610.0,434.8,175.2,40.3,610.0,599.0,never,never,TCP payload,520,500,20,NO,never,630,605,never
+tls,netem100,EdDSA,dafb_adaptive,0,2a indexed*,610.0,583.5,26.5,4.5,610.0,583.5,never,never,TCP payload,520,85,435,NO,never,,,-
+tls,netem100,EdDSA,dafb_reference,1,1 no mitigation,433.6,583.5,-149.9,-25.7,655.3,583.5,1,0.48,TCP payload,164,500,-336,yes,1,269,610,1
+tls,netem100,EdDSA,dafb_reference,1,2 HPACK 64 KiB,433.6,581.6,-148.0,-25.4,655.3,581.6,1,0.50,TCP payload,164,500,-336,yes,1,269,610,1
+tls,netem100,EdDSA,dafb_reference,1,3 token cache,433.6,434.8,-1.2,-0.3,655.3,599.0,47,46.92,TCP payload,164,500,-336,yes,1,269,605,1
+tls,netem100,EdDSA,dafb_reference,1,2a indexed*,433.6,583.5,-149.9,-25.7,655.3,583.5,1,0.48,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,ML-DSA-44,dafb_adaptive,1,1 no mitigation,436.6,829.7,-393.1,-47.4,899.7,829.7,1,0.18,TCP payload,164,3647,-3483,yes,1,269,3756,1
+tls,netem100,ML-DSA-44,dafb_adaptive,1,2 HPACK 64 KiB,436.6,826.8,-390.2,-47.2,899.7,826.8,1,0.19,TCP payload,164,3647,-3483,yes,1,269,3756,1
+tls,netem100,ML-DSA-44,dafb_adaptive,1,3 token cache,436.6,744.7,-308.1,-41.4,899.7,844.5,1,0.18,TCP payload,164,3647,-3483,yes,1,269,3752,1
+tls,netem100,ML-DSA-44,dafb_adaptive,1,2a indexed*,436.6,829.7,-393.1,-47.4,899.7,829.7,1,0.18,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,ML-DSA-44,dafb_reference,1,1 no mitigation,434.0,829.7,-395.7,-47.7,899.7,829.7,1,0.18,TCP payload,164,3647,-3483,yes,1,269,3756,1
+tls,netem100,ML-DSA-44,dafb_reference,1,2 HPACK 64 KiB,434.0,826.8,-392.8,-47.5,899.7,826.8,1,0.19,TCP payload,164,3647,-3483,yes,1,269,3756,1
+tls,netem100,ML-DSA-44,dafb_reference,1,3 token cache,434.0,744.7,-310.7,-41.7,899.7,844.5,1,0.18,TCP payload,164,3647,-3483,yes,1,269,3752,1
+tls,netem100,ML-DSA-44,dafb_reference,1,2a indexed*,434.0,829.7,-395.7,-47.7,899.7,829.7,1,0.18,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,ML-DSA-65,dafb_adaptive,1,1 no mitigation,436.1,970.4,-534.3,-55.1,980.0,970.4,1,0.02,TCP payload,164,4832,-4668,yes,1,269,4941,1
+tls,netem100,ML-DSA-65,dafb_adaptive,1,2 HPACK 64 KiB,436.1,967.9,-531.8,-54.9,980.0,967.9,1,0.02,TCP payload,164,4832,-4668,yes,1,269,4941,1
+tls,netem100,ML-DSA-65,dafb_adaptive,1,3 token cache,436.1,859.9,-423.8,-49.3,980.0,984.1,0,-0.01,TCP payload,164,4832,-4668,yes,1,269,4937,1
+tls,netem100,ML-DSA-65,dafb_adaptive,1,2a indexed*,436.1,970.4,-534.3,-55.1,980.0,970.4,1,0.02,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,ML-DSA-65,dafb_reference,1,1 no mitigation,433.1,970.4,-537.3,-55.4,980.0,970.4,1,0.02,TCP payload,164,4832,-4668,yes,1,269,4941,1
+tls,netem100,ML-DSA-65,dafb_reference,1,2 HPACK 64 KiB,433.1,967.9,-534.8,-55.3,980.0,967.9,1,0.02,TCP payload,164,4832,-4668,yes,1,269,4941,1
+tls,netem100,ML-DSA-65,dafb_reference,1,3 token cache,433.1,859.9,-426.8,-49.6,980.0,984.1,0,-0.01,TCP payload,164,4832,-4668,yes,1,269,4937,1
+tls,netem100,ML-DSA-65,dafb_reference,1,2a indexed*,433.1,970.4,-537.3,-55.4,980.0,970.4,1,0.02,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,ML-DSA-87,dafb_adaptive,1,1 no mitigation,438.0,1136.3,-698.3,-61.5,1206.7,1136.3,1,0.10,TCP payload,164,6590,-6426,yes,1,269,6699,1
+tls,netem100,ML-DSA-87,dafb_adaptive,1,2 HPACK 64 KiB,438.0,1134.4,-696.4,-61.4,1206.7,1134.4,1,0.10,TCP payload,164,6590,-6426,yes,1,269,6699,1
+tls,netem100,ML-DSA-87,dafb_adaptive,1,3 token cache,438.0,983.8,-545.8,-55.5,1206.7,1155.4,1,0.09,TCP payload,164,6590,-6426,yes,1,269,6695,1
+tls,netem100,ML-DSA-87,dafb_adaptive,1,2a indexed*,438.0,1136.3,-698.3,-61.5,1206.7,1136.3,1,0.10,TCP payload,164,85,79,NO,never,,,-
+tls,netem100,ML-DSA-87,dafb_reference,1,1 no mitigation,434.2,1136.3,-702.1,-61.8,1206.7,1136.3,1,0.10,TCP payload,164,6590,-6426,yes,1,269,6699,1
+tls,netem100,ML-DSA-87,dafb_reference,1,2 HPACK 64 KiB,434.2,1134.4,-700.2,-61.7,1206.7,1134.4,1,0.10,TCP payload,164,6590,-6426,yes,1,269,6699,1
+tls,netem100,ML-DSA-87,dafb_reference,1,3 token cache,434.2,983.8,-549.6,-55.9,1206.7,1155.4,1,0.09,TCP payload,164,6590,-6426,yes,1,269,6695,1
+tls,netem100,ML-DSA-87,dafb_reference,1,2a indexed*,434.2,1136.3,-702.1,-61.8,1206.7,1136.3,1,0.10,TCP payload,164,85,79,NO,never,,,-
