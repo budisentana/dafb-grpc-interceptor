@@ -1,0 +1,73 @@
+transport,link,scenario,arm,unit,failed,first_mode,later_mode,c2s_first_median,c2s_first_min,c2s_first_max,c2s_later_median,c2s_later_min,c2s_later_max,s2c_first_median,s2c_first_min,s2c_first_max,s2c_later_median,s2c_later_min,s2c_later_max,token_bytes
+plaintext,loopback,none,none,HEADERS,0,none,none,269,266,269,18,18,38,141,141,141,52,52,52,0
+plaintext,loopback,ES256,e3_verify,HEADERS,0,bearer,bearer,685,682,685,434,434,454,146,146,147,57,57,57,398
+plaintext,loopback,ES256,hpack_64k,HEADERS,0,bearer,bearer,689,689,689,434,434,434,147,147,147,57,57,57,398
+plaintext,loopback,ES256,token_cache,HEADERS,0,bearer,bearer,685,685,685,434,434,434,146,146,147,52,52,52,398
+plaintext,loopback,ES256,token_cache_miss,HEADERS,0,bearer,bearer,685,685,685,434,434,434,147,146,147,57,57,57,398
+plaintext,loopback,ES256,dafb_adaptive,HEADERS,0,inline,inline,705,705,705,454,454,454,146,146,147,57,57,57,398
+plaintext,loopback,ES256,dafb_reference,HEADERS,0,register,reference,707,707,707,98,98,98,227,227,228,52,52,52,398
+plaintext,loopback,ES256,dafb_register,HEADERS,0,register,register,707,707,707,456,456,456,227,227,228,138,138,138,398
+plaintext,loopback,EdDSA,e3_verify,HEADERS,0,bearer,bearer,685,685,685,434,434,434,146,146,146,57,57,57,398
+plaintext,loopback,EdDSA,hpack_64k,HEADERS,0,bearer,bearer,689,689,689,434,434,434,146,146,146,57,57,57,398
+plaintext,loopback,EdDSA,token_cache,HEADERS,0,bearer,bearer,685,685,685,434,434,434,146,146,146,52,52,52,398
+plaintext,loopback,EdDSA,token_cache_miss,HEADERS,0,bearer,bearer,685,685,685,434,434,434,146,146,146,57,57,57,398
+plaintext,loopback,EdDSA,dafb_adaptive,HEADERS,0,inline,inline,705,702,705,454,454,474,146,146,146,57,57,57,398
+plaintext,loopback,EdDSA,dafb_reference,HEADERS,0,register,reference,707,707,707,98,98,98,227,227,227,52,52,52,398
+plaintext,loopback,EdDSA,dafb_register,HEADERS,0,register,register,707,707,707,456,456,456,227,227,227,138,138,138,398
+plaintext,loopback,ML-DSA-44,e3_verify,HEADERS,0,bearer,bearer,3832,3829,3832,3581,3581,3601,145,145,146,56,56,56,3545
+plaintext,loopback,ML-DSA-44,hpack_64k,HEADERS,0,bearer,bearer,3836,3836,3836,3581,3581,3581,146,146,146,56,56,56,3545
+plaintext,loopback,ML-DSA-44,token_cache,HEADERS,0,bearer,bearer,3832,3832,3832,3581,3581,3581,145,145,146,52,52,52,3545
+plaintext,loopback,ML-DSA-44,token_cache_miss,HEADERS,0,bearer,bearer,3832,3829,3832,3581,3581,3601,146,145,146,56,56,56,3545
+plaintext,loopback,ML-DSA-44,dafb_adaptive,HEADERS,0,register,reference,3854,3854,3854,98,98,98,226,226,226,52,52,52,3545
+plaintext,loopback,ML-DSA-44,dafb_reference,HEADERS,0,register,reference,3854,3854,3854,98,98,98,226,226,227,52,52,52,3545
+plaintext,loopback,ML-DSA-44,dafb_register,HEADERS,0,register,register,3854,3854,3854,3603,3603,3603,226,226,227,137,137,138,3545
+plaintext,loopback,ML-DSA-65,e3_verify,HEADERS,0,bearer,bearer,5017,5014,5017,4766,4766,4786,145,145,146,56,56,57,4730
+plaintext,loopback,ML-DSA-65,hpack_64k,HEADERS,0,bearer,bearer,5021,5021,5021,4766,4766,4766,146,146,146,56,56,57,4730
+plaintext,loopback,ML-DSA-65,token_cache,HEADERS,0,bearer,bearer,5017,5014,5017,4766,4766,4786,146,145,146,52,52,52,4730
+plaintext,loopback,ML-DSA-65,token_cache_miss,HEADERS,0,bearer,bearer,5017,5017,5017,4766,4766,4766,145,145,146,56,56,57,4730
+plaintext,loopback,ML-DSA-65,dafb_adaptive,HEADERS,0,register,reference,5039,5039,5039,98,98,98,226,226,227,52,52,52,4730
+plaintext,loopback,ML-DSA-65,dafb_reference,HEADERS,0,register,reference,5039,5036,5039,98,98,118,226,226,227,52,52,52,4730
+plaintext,loopback,ML-DSA-65,dafb_register,HEADERS,0,register,register,5039,5039,5039,4788,4788,4788,226,226,227,137,137,138,4730
+plaintext,loopback,ML-DSA-87,e3_verify,HEADERS,0,bearer,bearer,6775,6772,6775,6524,6524,6544,146,145,146,56,56,57,6488
+plaintext,loopback,ML-DSA-87,hpack_64k,HEADERS,0,bearer,bearer,6779,6779,6779,6524,6524,6524,146,146,146,56,56,57,6488
+plaintext,loopback,ML-DSA-87,token_cache,HEADERS,0,bearer,bearer,6775,6775,6775,6524,6524,6524,146,145,146,52,52,52,6488
+plaintext,loopback,ML-DSA-87,token_cache_miss,HEADERS,0,bearer,bearer,6775,6772,6775,6524,6524,6544,146,146,146,56,56,57,6488
+plaintext,loopback,ML-DSA-87,dafb_adaptive,HEADERS,0,register,reference,6797,6794,6797,98,98,118,227,227,227,52,52,52,6488
+plaintext,loopback,ML-DSA-87,dafb_reference,HEADERS,0,register,reference,6797,6797,6797,98,98,98,227,226,227,52,52,52,6488
+plaintext,loopback,ML-DSA-87,dafb_register,HEADERS,0,register,register,6797,6797,6797,6546,6546,6546,227,226,227,137,137,138,6488
+tls,loopback,none,none,TCP payload,0,none,none,407,407,407,84,84,84,272,272,272,105,105,105,0
+tls,loopback,ES256,e3_verify,TCP payload,0,bearer,bearer,823,823,823,500,500,500,277,277,308,110,110,110,398
+tls,loopback,ES256,hpack_64k,TCP payload,0,bearer,bearer,827,824,827,500,500,520,278,278,309,110,110,110,398
+tls,loopback,ES256,token_cache,TCP payload,0,bearer,bearer,823,823,823,500,500,500,278,277,308,105,105,105,398
+tls,loopback,ES256,token_cache_miss,TCP payload,0,bearer,bearer,823,820,823,500,500,520,278,277,309,110,110,110,398
+tls,loopback,ES256,dafb_adaptive,TCP payload,0,inline,inline,843,840,843,520,520,540,277,277,308,110,110,110,398
+tls,loopback,ES256,dafb_reference,TCP payload,0,register,reference,845,845,845,164,164,164,381,380,411,105,105,105,398
+tls,loopback,ES256,dafb_register,TCP payload,0,register,register,845,842,845,522,522,542,380,380,411,213,213,213,398
+tls,loopback,EdDSA,e3_verify,TCP payload,0,bearer,bearer,823,823,823,500,500,500,277,277,308,110,110,110,398
+tls,loopback,EdDSA,hpack_64k,TCP payload,0,bearer,bearer,827,824,827,500,500,520,277,277,308,110,110,110,398
+tls,loopback,EdDSA,token_cache,TCP payload,0,bearer,bearer,823,823,823,500,500,500,277,277,308,105,105,105,398
+tls,loopback,EdDSA,token_cache_miss,TCP payload,0,bearer,bearer,823,823,823,500,500,500,277,277,277,110,110,110,398
+tls,loopback,EdDSA,dafb_adaptive,TCP payload,0,inline,inline,843,843,843,520,520,520,277,277,308,110,110,110,398
+tls,loopback,EdDSA,dafb_reference,TCP payload,0,register,reference,845,842,845,164,164,184,411,380,411,105,105,105,398
+tls,loopback,EdDSA,dafb_register,TCP payload,0,register,register,845,845,845,522,522,522,380,380,411,213,213,213,398
+tls,loopback,ML-DSA-44,e3_verify,TCP payload,0,bearer,bearer,3970,3967,3970,3647,3647,3667,276,276,307,109,109,110,3545
+tls,loopback,ML-DSA-44,hpack_64k,TCP payload,0,bearer,bearer,3974,3965,3974,3647,3647,3667,277,277,308,109,109,109,3545
+tls,loopback,ML-DSA-44,token_cache,TCP payload,0,bearer,bearer,3970,3970,3970,3647,3647,3647,277,276,308,105,105,105,3545
+tls,loopback,ML-DSA-44,token_cache_miss,TCP payload,0,bearer,bearer,3970,3970,3970,3647,3647,3647,276,276,307,109,109,109,3545
+tls,loopback,ML-DSA-44,dafb_adaptive,TCP payload,0,register,reference,3992,3992,3992,164,164,164,410,379,411,105,105,105,3545
+tls,loopback,ML-DSA-44,dafb_reference,TCP payload,0,register,reference,3992,3992,3992,164,164,164,380,379,411,105,105,105,3545
+tls,loopback,ML-DSA-44,dafb_register,TCP payload,0,register,register,3992,3992,3992,3669,3669,3669,379,379,411,212,212,212,3545
+tls,loopback,ML-DSA-65,e3_verify,TCP payload,0,bearer,bearer,5155,5155,5155,4832,4832,4832,276,276,307,109,109,109,4730
+tls,loopback,ML-DSA-65,hpack_64k,TCP payload,0,bearer,bearer,5159,5159,5159,4832,4832,4832,277,277,308,109,109,109,4730
+tls,loopback,ML-DSA-65,token_cache,TCP payload,0,bearer,bearer,5155,5155,5155,4832,4832,4832,277,276,307,105,105,105,4730
+tls,loopback,ML-DSA-65,token_cache_miss,TCP payload,0,bearer,bearer,5155,5155,5155,4832,4832,4832,277,276,308,109,109,110,4730
+tls,loopback,ML-DSA-65,dafb_adaptive,TCP payload,0,register,reference,5177,5177,5177,164,164,164,379,379,410,105,105,105,4730
+tls,loopback,ML-DSA-65,dafb_reference,TCP payload,0,register,reference,5177,5177,5177,164,164,164,380,379,410,105,105,105,4730
+tls,loopback,ML-DSA-65,dafb_register,TCP payload,0,register,register,5177,5177,5177,4854,4854,4854,379,379,380,212,212,212,4730
+tls,loopback,ML-DSA-87,e3_verify,TCP payload,0,bearer,bearer,6913,6913,6913,6590,6590,6590,277,277,308,109,109,110,6488
+tls,loopback,ML-DSA-87,hpack_64k,TCP payload,0,bearer,bearer,6917,6917,6917,6590,6590,6590,277,277,308,109,109,110,6488
+tls,loopback,ML-DSA-87,token_cache,TCP payload,0,bearer,bearer,6913,6913,6913,6590,6590,6590,277,277,277,105,105,105,6488
+tls,loopback,ML-DSA-87,token_cache_miss,TCP payload,0,bearer,bearer,6913,6913,6913,6590,6590,6590,308,277,308,109,109,110,6488
+tls,loopback,ML-DSA-87,dafb_adaptive,TCP payload,0,register,reference,6935,6932,6935,164,164,184,380,380,411,105,105,105,6488
+tls,loopback,ML-DSA-87,dafb_reference,TCP payload,0,register,reference,6935,6932,6935,164,164,184,380,380,380,105,105,105,6488
+tls,loopback,ML-DSA-87,dafb_register,TCP payload,0,register,register,6935,6932,6935,6612,6612,6632,411,380,411,212,212,213,6488
