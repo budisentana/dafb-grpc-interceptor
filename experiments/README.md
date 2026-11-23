@@ -12,6 +12,8 @@ ran on the machine described in `common/environment.txt`.
 | `e3_combined/` | E3: signing + server-side verification + gRPC transport in the same call (baseline for E4-E5) | DAFB paper |
 | `e4_dafb/` | E4: DAFB (policies inline, adaptive, reference) vs no mitigation (E3 verify path), loopback and 100 Mbit/s netem | DAFB paper |
 | `e5_baselines/` | E5: DAFB vs fair baselines (no mitigation, 64 KiB HPACK tables, verified-token cache), plaintext and TLS | DAFB paper |
+| `e6_network/` | E6 (paper E4): realistic links L1-L4 (rate, delay, loss) and the crossover model | DAFB paper |
+| `e7_load/` | E7 (paper E5): concurrent load (1-64 channels) and handle-store scaling | DAFB paper |
 | `common/` | Shared: `cpu_setup.sh` (fix/restore CPU frequency) and the environment record | |
 
 ## Running
@@ -147,3 +149,47 @@ sudo bash experiments/common/cpu_setup.sh restore
 Output (`e5_baselines/results/`): `e5_latency.csv`, `e5_bytes.csv`, `e5_scenarios.csv`, `e5_run_environment.csv`
 (tagged with transport and link), and `e5_latency_summary.csv`, `e5_bytes_summary.csv`, `e5_comparison.csv`,
 `e5_report.txt`.
+
+## Paper numbering
+
+In the DAFB paper, repo E3/E4/E5 are paper E1/E2/E3, and repo E6/E7 are paper E4/E5.
+
+## E6 (paper E4): realistic links and the crossover
+
+Arms (plaintext, E5 implementation and server): `e3_verify`, `token_cache`, `dafb_reference` (its registration
+is the first call of each connection, logged in `e6_scenarios.csv`). Schemes ES256, ML-DSA-44/65/87.
+Links (`experiments/common/netem_profile.sh`, port 50110, both directions; delay is one-way, so RTT = 2x):
+
+| id | rate | delay (one-way) | loss | calls per scenario |
+|---|---|---|---|---|
+| L1 | 1 Gbit/s | 0 | 0 | 50 warm-up + 500 |
+| L2 | 100 Mbit/s | 5 ms | 0 | 20 warm-up + 300 |
+| L3 | 100 Mbit/s | 5 ms | 0.5% | 20 warm-up + 300 |
+| L4 | 20 Mbit/s | 20 ms | 0 | 20 warm-up + 300 |
+
+L2-L4 use fewer calls because every call costs at least one RTT. Per scenario also: 10-call byte pass
+(HEADERS bytes), TCP RetransSegs and netem sent/dropped during the measured calls. Client core 2, server
+core 3 (as E1-E5; on this CPU logical CPUs 2 and 3 are the two threads of one physical core).
+`e6_analyze.py`: median/p95/p99 per arm, paired-run % change (and us) of DAFB vs none and vs cache with
+mean ± 95% t-CI (df = 4), and on L1 the crossover prediction dt = 8*dB/R - delta (dB = HEADERS cache - DAFB,
+delta = DAFB - cache on loopback from E5) next to the measured value.
+
+## E7 (paper E5): concurrent load and the handle store
+
+Server `e7_server.py` on cores 2-3 (one physical core), 16 workers, restarted per scenario. Clients:
+closed loop in up to 2 processes on cores 0-1, one channel (TCP connection) and one distinct token
+(`sub`) per client; 5 s warm-up, 20 s window. ML-DSA-65 at 1, 4, 16, 64 channels and ES256 at 16, 64;
+arms no mitigation, token cache, DAFB reference; links loopback and N100 (100 Mbit/s, port 50120).
+Per scenario: throughput, p50/p99, server CPU per call (`/proc/<pid>/stat`), server and client CPUs
+used, handle-store / cache entries and size, RSS. Per-call rows go to `e7_calls_<run>.csv.gz` (one gzip
+file per run, to stay under GitHub's file size limit). `e7_store_scaling.py`: 10k and 100k entries
+in-process, memory per entry (tracemalloc) and lookup median for DAFB handles vs the token cache.
+
+## Running E6 and E7
+
+All root steps (CPU governor, netem profiles) are in one script; benchmarks run as your user:
+
+```bash
+sudo bash experiments/run_e6_e7.sh        # E6 then E7, about 2.5 hours; progress in experiments/run_e6_e7.log
+sudo bash experiments/common/cpu_setup.sh restore
+```

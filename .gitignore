@@ -10,3 +10,4 @@ keys/
 *.secret
 # Claude Code local state (worktrees, settings)
 .claude/
+experiments/run_e6_e7.log
