@@ -1,4 +1,4 @@
-E4 results (DAFB vs no mitigation), input: /home/budi/projects/dafb-grpc-interceptor/.claude/worktrees/dafb-reference-path/experiments/e4_dafb/results
+E4 results (DAFB vs no mitigation), input: /home/budi/projects/dafb-grpc-interceptor/experiments/e4_dafb/results
 
 ====================================================================================================
 Link: loopback, 5 run(s)
@@ -75,6 +75,81 @@ ML-DSA-65  dafb_reference     530.5    369.8    465.3      1    0.68      1 1 1 
 ML-DSA-87  dafb_adaptive      560.8    371.6    498.1      1    0.50      1 1 1 1 1        1         1
 ML-DSA-87  dafb_reference     560.8    369.6    498.1      1    0.49      1 1 1 1 1        1         1
 
+====================================================================================================
+Link: netem100, 5 run(s)
+====================================================================================================
+
+Latency per call (us, pooled over runs); diff vs e3_verify of the same scheme
+Scheme     Arm               Median      p95      p99  Verify    vs e3  vs e3 %  Run-median mean [95% CI]
+none       none               351.1    372.5    395.5     0.0        -        -  351.1 [349.7, 352.6]
+ES256      e3_verify          548.2    580.7    607.0    97.6        -        -  548.3 [545.4, 551.3]
+ES256      dafb_inline        572.6    613.8    690.8    97.8     24.4      4.5  572.8 [568.1, 577.5]
+ES256      dafb_adaptive      574.3    608.9    635.8    98.0     26.1      4.8  574.2 [571.6, 576.9]
+ES256      dafb_reference     405.7    430.7    455.3     0.0   -142.5    -26.0  405.5 [404.3, 406.8]
+ES256      dafb_register      618.7    667.7    697.7    98.9     70.5     12.9  618.9 [614.3, 623.5]
+EdDSA      e3_verify          553.9    584.5    608.4   112.3        -        -  554.2 [552.1, 556.2]
+EdDSA      dafb_inline        579.8    612.4    644.7   112.5     25.9      4.7  579.9 [575.6, 584.1]
+EdDSA      dafb_adaptive      581.8    613.1    636.6   112.4     27.9      5.0  581.8 [577.9, 585.7]
+EdDSA      dafb_reference     406.1    431.2    454.3     0.0   -147.8    -26.7  406.2 [404.8, 407.6]
+EdDSA      dafb_register      624.3    670.9    705.0   113.0     70.4     12.7  624.8 [621.9, 627.7]
+ML-DSA-44  e3_verify          795.6    827.0    855.5    42.4        -        -  795.4 [792.9, 798.0]
+ML-DSA-44  dafb_inline        822.2    860.6    904.1    42.7     26.6      3.3  822.3 [819.3, 825.4]
+ML-DSA-44  dafb_adaptive      409.4    436.5    470.6     0.0   -386.2    -48.5  409.4 [407.7, 411.1]
+ML-DSA-44  dafb_reference     406.1    429.9    452.6     0.0   -389.5    -49.0  406.2 [404.9, 407.5]
+ML-DSA-44  dafb_register      862.5    923.6    948.7    43.2     66.9      8.4  862.5 [858.9, 866.1]
+ML-DSA-65  e3_verify          933.5    963.5    985.6    59.5        -        -  933.0 [928.9, 937.1]
+ML-DSA-65  dafb_inline        960.5    992.8   1013.5    59.6     27.0      2.9  960.5 [956.4, 964.5]
+ML-DSA-65  dafb_adaptive      408.7    435.0    458.1     0.0   -524.8    -56.2  408.8 [406.3, 411.3]
+ML-DSA-65  dafb_reference     406.0    432.2    458.9     0.0   -527.5    -56.5  406.0 [404.8, 407.3]
+ML-DSA-65  dafb_register      981.6   1034.3   1067.0    60.1     48.1      5.2  981.8 [980.5, 983.0]
+ML-DSA-87  e3_verify         1099.0   1136.8   1163.2    82.3        -        -  1099.2 [1095.1, 1103.3]
+ML-DSA-87  dafb_inline       1126.9   1169.1   1200.0    82.6     27.9      2.5  1127.4 [1123.8, 1130.9]
+ML-DSA-87  dafb_adaptive      408.8    433.9    453.4     0.0   -690.2    -62.8  408.9 [407.4, 410.5]
+ML-DSA-87  dafb_reference     406.4    431.4    456.3     0.0   -692.6    -63.0  406.6 [405.1, 408.2]
+ML-DSA-87  dafb_register     1169.4   1217.4   1250.3    83.0     70.4      6.4  1169.7 [1166.1, 1173.3]
+
+HEADERS bytes per call (E2 relay method; median over runs, [min-max] for later calls)
+Scheme     Arm              c2s 1st          c2s later   vs e3  s2c 1st s2c later  modes (1st / later)
+none       none                 269         18 [18-38]       -      141        52  none / none
+ES256      e3_verify            685      434 [434-434]       0      146        57  bearer / bearer
+ES256      dafb_inline          705      454 [454-474]      20      146        57  inline / inline
+ES256      dafb_adaptive        705      454 [454-474]      20      146        57  inline / inline
+ES256      dafb_reference       707         98 [98-98]    -336      227        52  register / reference
+ES256      dafb_register        707      456 [456-476]      22      227       138  register / register
+EdDSA      e3_verify            685      434 [434-434]       0      146        57  bearer / bearer
+EdDSA      dafb_inline          705      454 [454-454]      20      146        57  inline / inline
+EdDSA      dafb_adaptive        705      454 [454-454]      20      146        57  inline / inline
+EdDSA      dafb_reference       707        98 [98-118]    -336      227        52  register / reference
+EdDSA      dafb_register        707      456 [456-456]      22      227       138  register / register
+ML-DSA-44  e3_verify           3832   3581 [3581-3601]       0      145        56  bearer / bearer
+ML-DSA-44  dafb_inline         3852   3601 [3601-3601]      20      145        56  inline / inline
+ML-DSA-44  dafb_adaptive       3854         98 [98-98]   -3483      226        52  register / reference
+ML-DSA-44  dafb_reference      3854         98 [98-98]   -3483      226        52  register / reference
+ML-DSA-44  dafb_register       3854   3603 [3603-3603]      22      226       137  register / register
+ML-DSA-65  e3_verify           5017   4766 [4766-4766]       0      145        56  bearer / bearer
+ML-DSA-65  dafb_inline         5037   4786 [4786-4786]      20      145        56  inline / inline
+ML-DSA-65  dafb_adaptive       5039         98 [98-98]   -4668      226        52  register / reference
+ML-DSA-65  dafb_reference      5039         98 [98-98]   -4668      227        52  register / reference
+ML-DSA-65  dafb_register       5039   4788 [4788-4788]      22      226       137  register / register
+ML-DSA-87  e3_verify           6775   6524 [6524-6524]       0      146        56  bearer / bearer
+ML-DSA-87  dafb_inline         6795   6544 [6544-6564]      20      146        56  inline / inline
+ML-DSA-87  dafb_adaptive       6797         98 [98-98]   -6426      227        52  register / reference
+ML-DSA-87  dafb_reference      6797         98 [98-98]   -6426      227        52  register / reference
+ML-DSA-87  dafb_register       6797   6546 [6546-6546]      22      227       137  register / register
+
+Break-even: reference calls needed after the registration call (k*)
+Scheme     Policy            Reg us   Ref us  Base us  k lat   exact        per run  k c2s B  k both B
+ES256      dafb_adaptive   no registration (policy sends the token inline)
+ES256      dafb_reference     618.7    405.7    548.2      1    0.49      1 1 1 1 1        1         1
+EdDSA      dafb_adaptive   no registration (policy sends the token inline)
+EdDSA      dafb_reference     624.3    406.1    553.9      1    0.48      1 1 1 1 1        1         1
+ML-DSA-44  dafb_adaptive      862.5    409.4    795.6      1    0.17      1 1 1 1 1        1         1
+ML-DSA-44  dafb_reference     862.5    406.1    795.6      1    0.17      1 1 1 1 1        1         1
+ML-DSA-65  dafb_adaptive      981.6    408.7    933.5      1    0.09      1 1 1 1 1        1         1
+ML-DSA-65  dafb_reference     981.6    406.0    933.5      1    0.09      1 1 1 1 1        1         1
+ML-DSA-87  dafb_adaptive     1169.4    408.8   1099.0      1    0.10      1 1 1 1 1        1         1
+ML-DSA-87  dafb_reference    1169.4    406.4   1099.0      1    0.10      1 1 1 1 1        1         1
+
 Checks
   none (run medians within 10%, no rejected handles, no failures)
-Measured calls: 65000, failed: 0
+Measured calls: 130000, failed: 0
