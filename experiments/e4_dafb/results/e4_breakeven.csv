@@ -1,0 +1,11 @@
+link,scenario,policy,note,register_us,reference_us,e3_verify_us,k_latency,k_latency_exact,k_latency_per_run,register_c2s_B,reference_c2s_B,e3_verify_c2s_B,k_bytes_c2s,k_bytes_c2s_exact,register_both_B,reference_both_B,e3_verify_both_B,k_bytes_both,k_bytes_both_exact
+loopback,ES256,dafb_adaptive,no registration (policy sends the token inline),,,,,,,,,,,,,,,,
+loopback,ES256,dafb_reference,,555.2,370.5,492.1,1,0.52,1 1 1 1 1,456,98,434,1,0.065,594,150,491,1,0.302
+loopback,EdDSA,dafb_adaptive,no registration (policy sends the token inline),,,,,,,,,,,,,,,,
+loopback,EdDSA,dafb_reference,,563.1,370.4,496.3,1,0.53,1 1 1 1 1,456,98,434,1,0.065,594,150,491,1,0.302
+loopback,ML-DSA-44,dafb_adaptive,,508.4,371.1,445.0,1,0.86,1 1 1 1 1,3603,98,3581,1,0.006,3740,150,3637,1,0.030
+loopback,ML-DSA-44,dafb_reference,,508.4,369.1,445.0,1,0.84,1 1 1 1 1,3603,98,3581,1,0.006,3740,150,3637,1,0.030
+loopback,ML-DSA-65,dafb_adaptive,,530.5,371.9,465.3,1,0.70,1 1 1 1 1,4788,98,4766,1,0.005,4925,150,4822,1,0.022
+loopback,ML-DSA-65,dafb_reference,,530.5,369.8,465.3,1,0.68,1 1 1 1 1,4788,98,4766,1,0.005,4925,150,4822,1,0.022
+loopback,ML-DSA-87,dafb_adaptive,,560.8,371.6,498.1,1,0.50,1 1 1 1 1,6546,98,6524,1,0.003,6683,150,6580,1,0.016
+loopback,ML-DSA-87,dafb_reference,,560.8,369.6,498.1,1,0.49,1 1 1 1 1,6546,98,6524,1,0.003,6683,150,6580,1,0.016
