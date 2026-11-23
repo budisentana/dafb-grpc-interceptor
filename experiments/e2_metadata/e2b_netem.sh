@@ -2,11 +2,12 @@
 # E2b network condition: limit gRPC traffic on loopback (TCP port 50060, both
 # directions, IPv4 and IPv6) to a fixed rate with netem; all other loopback
 # traffic is untouched. No delay is added, so the cost measured is serialization.
-#   sudo ./e2b_netem.sh on [rate]   (default rate 100mbit)
+#   sudo ./e2b_netem.sh on [rate] [port]   (default rate 100mbit, port 50060;
+#                                            E4 uses port 50080)
 #   sudo ./e2b_netem.sh off         (restore the default lo qdisc)
 #   ./e2b_netem.sh status
 set -euo pipefail
-mode="${1:-status}"; rate="${2:-100mbit}"; port=50060
+mode="${1:-status}"; rate="${2:-100mbit}"; port="${3:-50060}"
 case "$mode" in
   on)
     tc qdisc add dev lo root handle 1: prio bands 3 priomap 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1

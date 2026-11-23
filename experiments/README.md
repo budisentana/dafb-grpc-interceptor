@@ -10,6 +10,7 @@ ran on the machine described in `common/environment.txt`.
 | `e1b_signatures/` | E1b: ML-DSA-44/65/87 vs ECDSA P-256 and Ed25519, fixed CPU frequency | Lontar Komputer (Paper 1) |
 | `e2_metadata/` | E2: bytes on the wire and latency of bearer tokens in gRPC metadata | Paper 2 |
 | `e3_combined/` | E3: signing + server-side verification + gRPC transport in the same call (baseline for E4-E5) | DAFB paper |
+| `e4_dafb/` | E4: DAFB (policies inline, adaptive, reference) vs no mitigation (E3 verify path), loopback and 100 Mbit/s netem | DAFB paper |
 | `common/` | Shared: `cpu_setup.sh` (fix/restore CPU frequency) and the environment record | |
 
 ## Running
@@ -75,3 +76,34 @@ sent once with `x-dafb-mode: register`; the server verifies them and returns a h
 (`x-dafb-handle`, `x-dafb-handle-ttl`, capped by the token's `exp`), and later calls send only the handle.
 An unknown or expired handle is rejected (`x-dafb-error: handle-invalid`) and the client retries once with
 the full token. Token format: `interceptors/jws_tokens.py` (same as E2/E3). Tests: `python -m pytest tests/`.
+
+## E4: DAFB vs no mitigation
+
+Schemes ES256, EdDSA, ML-DSA-44/65/87 (+ `none`), JWS tokens in `authorization` with a 200-byte claim set.
+The E2/E3 claim set has `exp` = 1 Jan 2026 (already past); E4 keeps the same fields and size with
+`exp` = 1 Jan 2028. One E4 server (`e4_server.py`) runs `DAFBServerInterceptor` with
+`jws_tokens.TokenVerifier` (exp check on) for every arm, so the baseline and DAFB share one verifier:
+
+- `e3_verify`: plain bearer token, verified on every call (no mitigation)
+- `dafb_inline`, `dafb_adaptive`, `dafb_reference`: DAFB client interceptor with that policy
+- `dafb_register`: policy reference, handle forgotten before every call (every call registers),
+  used as the registration cost in the break-even
+
+Per scenario (fresh connection, fresh handle cache): 10-call byte pass through the E2 relay
+(HEADERS bytes counted client->server and server->client), then 50 warm-up + 500 measured calls.
+Client on core 2, server on core 3, port 50080. Break-even k* = reference calls needed after the
+registration call: `k* = ceil((R - B) / (B - F))`, R = registration, F = reference call, B = e3_verify,
+for median latency and for HEADERS bytes.
+
+```bash
+sudo bash experiments/common/cpu_setup.sh
+bash experiments/e4_dafb/e4_run.sh loopback                       # 5 runs + analysis
+sudo bash experiments/e2_metadata/e2b_netem.sh on 100mbit 50080   # E2b condition on the E4 port
+bash experiments/e4_dafb/e4_run.sh netem100
+sudo bash experiments/e2_metadata/e2b_netem.sh off
+sudo bash experiments/common/cpu_setup.sh restore
+```
+
+Output (`e4_dafb/results/`): `e4_latency.csv`, `e4_bytes.csv`, `e4_scenarios.csv`, `e4_run_environment.csv`
+(all tagged with `link`), and from `e4_analyze.py`: `e4_latency_summary.csv`, `e4_bytes_summary.csv`,
+`e4_breakeven.csv`, `e4_report.txt`.
