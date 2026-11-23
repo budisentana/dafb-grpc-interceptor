@@ -11,6 +11,7 @@ ran on the machine described in `common/environment.txt`.
 | `e2_metadata/` | E2: bytes on the wire and latency of bearer tokens in gRPC metadata | Paper 2 |
 | `e3_combined/` | E3: signing + server-side verification + gRPC transport in the same call (baseline for E4-E5) | DAFB paper |
 | `e4_dafb/` | E4: DAFB (policies inline, adaptive, reference) vs no mitigation (E3 verify path), loopback and 100 Mbit/s netem | DAFB paper |
+| `e5_baselines/` | E5: DAFB vs fair baselines (no mitigation, 64 KiB HPACK tables, verified-token cache), plaintext and TLS | DAFB paper |
 | `common/` | Shared: `cpu_setup.sh` (fix/restore CPU frequency) and the environment record | |
 
 ## Running
@@ -107,3 +108,36 @@ sudo bash experiments/common/cpu_setup.sh restore
 Output (`e4_dafb/results/`): `e4_latency.csv`, `e4_bytes.csv`, `e4_scenarios.csv`, `e4_run_environment.csv`
 (all tagged with `link`), and from `e4_analyze.py`: `e4_latency_summary.csv`, `e4_bytes_summary.csv`,
 `e4_breakeven.csv`, `e4_report.txt`.
+
+## E5: DAFB vs fair baselines
+
+Same schemes, tokens, verifier and procedure as E4 (byte pass + 50 warm-up + 500 measured, cores 2/3,
+5 runs per condition). Server groups (one process each, order shuffled): plain (`e3_verify`,
+`dafb_adaptive`, `dafb_reference`, `dafb_register`, `none`), `--hpack-table 65536` (`hpack_64k`) and
+`--token-cache` (`token_cache`, `token_cache_miss`: every call a fresh pre-signed token).
+
+- Baseline 1, no mitigation: `e3_verify`.
+- Baseline 2, larger HPACK table: client `grpc.http2.hpack_table_size.encoder` and server
+  `grpc.http2.hpack_table_size.decoder` = 65536. **grpcio 1.84.1 never indexes application metadata**:
+  every custom header (`authorization` or any other name, any size) is sent as a "literal header field
+  without indexing" (representation byte 0x00) on every call, while gRPC's own headers are indexed. The
+  table options take effect (4-byte size update on the first call) but the token is still sent in full;
+  `e5_analyze.py` reports this as the indexing check.
+- Baseline 3, verified-token cache: `interceptors/token_cache.py` (SHA-256 of the token, TTL 3600 s capped
+  by `exp`, 100,000 entries, as DAFB handles). The full token is sent; verification is skipped on a hit.
+- Baseline 4, TLS: `--transport tls` runs every arm over TLS (self-signed P-256 certificate per run).
+  Under TLS the relay counts TCP payload bytes per call, since the HTTP/2 frames are encrypted.
+
+Break-even against a baseline with first-call cost M and steady cost B: smallest k with
+`R + k*F <= M + k*B` (R = DAFB registration, F = DAFB reference call); "never" when F >= B.
+
+```bash
+sudo bash experiments/common/cpu_setup.sh
+bash experiments/e5_baselines/e5_run.sh plaintext
+bash experiments/e5_baselines/e5_run.sh tls
+sudo bash experiments/common/cpu_setup.sh restore
+```
+
+Output (`e5_baselines/results/`): `e5_latency.csv`, `e5_bytes.csv`, `e5_scenarios.csv`, `e5_run_environment.csv`
+(tagged with transport and link), and `e5_latency_summary.csv`, `e5_bytes_summary.csv`, `e5_comparison.csv`,
+`e5_report.txt`.
